@@ -29,13 +29,16 @@ export default function Hero3D() {
   // 2: Typing complete, pause, then searching...
   // 3: Search results render, PageNotFound highlighted
   // 4: PageNotFound result clicked/selected -> expands to browser & unlocks scroll
+  const [hasRevealedHero, setHasRevealedHero] = useState(false);
   const [typingStage, setTypingStage] = useState(1);
   const [typedText, setTypedText] = useState('');
+  
   const [isSearching, setIsSearching] = useState(false);
   const [searchGlow, setSearchGlow] = useState(false);
   
   const query = "best digital marketing agency";
   const containerRef = useRef(null);
+  const hasRevealedHeroRef = useRef(hasRevealedHero);
 
   // -------------------------------------------------------------
   // STAGE 1 & 2: AUTO TYPING AND AUTO SEARCH TRIGGER
@@ -138,15 +141,47 @@ export default function Hero3D() {
 
   // Stage 3 & 4: Browser window transforms into MacBook screen and opens lid
   // Range: 0.0 -> 0.20: Scale & Perspective tilt browser window, Keyboard Base slides up
+  // Stage 3 & 4: Browser window transforms into MacBook screen and opens lid
+  // Range: 0.0 -> 0.20: Scale & Perspective tilt browser window, Keyboard Base slides up
   const browserScale = useTransform(scrollYProgress, [0, 0.2], [1, 0.65]);
   const browserY = useTransform(scrollYProgress, [0, 0.2], ["0vh", "5vh"]);
-  const browserRotateX = useTransform(scrollYProgress, [0, 0.2], [0, -10]);
-  const keyboardOpacity = useTransform(scrollYProgress, [0.08, 0.2], [0, 1]);
+  const browserRotateX = useTransform(scrollYProgress, (progress) => {
+    if (hasRevealedHeroRef.current) {
+      return -10;
+    } else {
+      if (progress < 0.2) {
+        return (progress / 0.2) * -10;
+      }
+      return -10;
+    }
+  });
+  const keyboardOpacity = useTransform(scrollYProgress, (progress) => {
+    if (hasRevealedHeroRef.current) {
+      return 1;
+    } else {
+      if (progress < 0.08) return 0;
+      if (progress < 0.2) {
+        return (progress - 0.08) / 0.12;
+      }
+      return 1;
+    }
+  });
   const keyboardY = useTransform(scrollYProgress, [0.08, 0.2], ["60px", "0px"]);
 
   // MacBook lid opening rotation hinge: rotate from closed (-90deg flat) to open (-10deg tilted back)
   // Range: 0.20 -> 0.45: Lid rotation opens
-  const lidRotation = useTransform(scrollYProgress, [0.2, 0.45], [-92, -8]);
+  const lidRotation = useTransform(scrollYProgress, (progress) => {
+    if (hasRevealedHeroRef.current) {
+      return -8;
+    } else {
+      if (progress < 0.2) return -92;
+      if (progress < 0.45) {
+        const ratio = (progress - 0.2) / 0.25;
+        return -92 + ratio * (-8 - -92);
+      }
+      return -8;
+    }
+  });
 
   // Mock Website inside Screen scrolling / building sections
   // Range: 0.45 -> 0.72: Mock screen page scrolls / builds
@@ -161,19 +196,20 @@ export default function Hero3D() {
 
   // Stage 7: Floating status transformation cards
   // Range: 0.70 -> 0.85: Staggered fades and translations around laptop
-  const card1Opacity = useTransform(scrollYProgress, [0.70, 0.76], [0, 1]);
+  // Fade out completely by 0.88 when the final hero state begins to reveal
+  const card1Opacity = useTransform(scrollYProgress, [0.70, 0.76, 0.85, 0.88], [0, 1, 1, 0]);
   const card1X = useTransform(scrollYProgress, [0.70, 0.76], [-80, 0]);
   const card1Y = useTransform(scrollYProgress, [0.70, 0.76], [-30, 0]);
 
-  const card2Opacity = useTransform(scrollYProgress, [0.73, 0.79], [0, 1]);
+  const card2Opacity = useTransform(scrollYProgress, [0.73, 0.79, 0.85, 0.88], [0, 1, 1, 0]);
   const card2X = useTransform(scrollYProgress, [0.73, 0.79], [-90, 0]);
   const card2Y = useTransform(scrollYProgress, [0.73, 0.79], [40, 0]);
 
-  const card3Opacity = useTransform(scrollYProgress, [0.76, 0.82], [0, 1]);
+  const card3Opacity = useTransform(scrollYProgress, [0.76, 0.82, 0.85, 0.88], [0, 1, 1, 0]);
   const card3X = useTransform(scrollYProgress, [0.76, 0.82], [80, 0]);
   const card3Y = useTransform(scrollYProgress, [0.76, 0.82], [-40, 0]);
 
-  const card4Opacity = useTransform(scrollYProgress, [0.78, 0.84], [0, 1]);
+  const card4Opacity = useTransform(scrollYProgress, [0.78, 0.84, 0.85, 0.88], [0, 1, 1, 0]);
   const card4X = useTransform(scrollYProgress, [0.78, 0.84], [90, 0]);
   const card4Y = useTransform(scrollYProgress, [0.78, 0.84], [30, 0]);
 
@@ -181,20 +217,136 @@ export default function Hero3D() {
   // Range: 0.85 -> 1.0: Laptop scale decreases, final reveal elements fade in
   const finalLaptopScale = useTransform(scrollYProgress, [0.85, 0.96], [1, 0.7]);
   const finalLaptopY = useTransform(scrollYProgress, [0.85, 0.96], ["0px", "80px"]);
-  const finalOverlayOpacity = useTransform(scrollYProgress, [0.88, 0.96], [0, 1]);
-  const finalOverlayY = useTransform(scrollYProgress, [0.88, 0.96], ["40px", "0px"]);
+  const finalOverlayOpacity = useTransform(scrollYProgress, (progress) => {
+    if (hasRevealedHeroRef.current) {
+      if (progress < 0.2) {
+        return 1 - (progress / 0.2);
+      }
+      if (progress < 0.88) return 0;
+      if (progress < 0.96) {
+        return (progress - 0.88) / 0.08;
+      }
+      return 1;
+    } else {
+      if (progress < 0.88) return 0;
+      if (progress < 0.96) {
+        return (progress - 0.88) / 0.08;
+      }
+      return 1;
+    }
+  });
+  const finalOverlayY = useTransform(scrollYProgress, (progress) => {
+    if (hasRevealedHeroRef.current) {
+      if (progress < 0.2) {
+        return `${-80 * (1 - (progress / 0.2))}px`;
+      }
+      if (progress < 0.88) return "40px";
+      if (progress < 0.96) {
+        const ratio = (progress - 0.88) / 0.08;
+        return `${40 - ratio * 120}px`;
+      }
+      return "-80px";
+    } else {
+      if (progress < 0.88) return "40px";
+      if (progress < 0.96) {
+        const ratio = (progress - 0.88) / 0.08;
+        return `${40 - ratio * 120}px`;
+      }
+      return "-80px";
+    }
+  });
 
   // Top level definitions to avoid conditional React Hook violations
   const scrollIndicatorOpacity = useTransform(scrollYProgress, [0, 0.08], [1, 0]);
-  const laptopScaleValue = useTransform(scrollYProgress, [0, 0.2, 0.85, 0.96], [1, 0.65, 0.65, 0.45]);
-  const laptopYValue = useTransform(scrollYProgress, [0, 0.2, 0.85, 0.96], ["0vh", "3vh", "3vh", "22vh"]);
-  const finalOverlayPointerEvents = useTransform(finalOverlayOpacity, [0, 0.8], (v) => v > 0.8 ? 'auto' : 'none');
+  
+  const laptopScaleValue = useTransform(scrollYProgress, (progress) => {
+    if (hasRevealedHeroRef.current) {
+      if (progress < 0.2) return 0.45;
+      if (progress < 0.4) {
+        const ratio = (progress - 0.2) / 0.2;
+        return 0.45 + ratio * (0.65 - 0.45);
+      }
+      if (progress < 0.85) return 0.65;
+      if (progress < 0.96) {
+        const ratio = (progress - 0.85) / 0.11;
+        return 0.65 - ratio * (0.65 - 0.45);
+      }
+      return 0.45;
+    } else {
+      if (progress < 0.2) {
+        const ratio = progress / 0.2;
+        return 1 - ratio * (1 - 0.65);
+      }
+      if (progress < 0.85) return 0.65;
+      if (progress < 0.96) {
+        const ratio = (progress - 0.85) / 0.11;
+        return 0.65 - ratio * (0.65 - 0.45);
+      }
+      return 0.45;
+    }
+  });
+
+  const laptopYValue = useTransform(scrollYProgress, (progress) => {
+    if (hasRevealedHeroRef.current) {
+      if (progress < 0.2) return "28vh";
+      if (progress < 0.4) {
+        const ratio = (progress - 0.2) / 0.2;
+        return `${28 - ratio * (28 - 3)}vh`;
+      }
+      if (progress < 0.85) return "3vh";
+      if (progress < 0.96) {
+        const ratio = (progress - 0.85) / 0.11;
+        return `${3 + ratio * (28 - 3)}vh`;
+      }
+      return "28vh";
+    } else {
+      if (progress < 0.2) {
+        const ratio = progress / 0.2;
+        return `${ratio * 3}vh`;
+      }
+      if (progress < 0.85) return "3vh";
+      if (progress < 0.96) {
+        const ratio = (progress - 0.85) / 0.11;
+        return `${3 + ratio * (28 - 3)}vh`;
+      }
+      return "28vh";
+    }
+  });
+
+  const finalOverlayPointerEvents = useTransform(finalOverlayOpacity, (v) => v > 0.8 ? 'auto' : 'none');
 
   // Subtle background spotlight brightness linked to progress
-  const bgSpotlight = useTransform(scrollYProgress, [0.2, 0.9], [
-    'radial-gradient(circle at center 60%, rgba(124, 58, 237, 0.06) 0%, rgba(2, 2, 4, 0) 65%)',
-    'radial-gradient(circle at center 60%, rgba(124, 58, 237, 0.15) 0%, rgba(2, 2, 4, 0) 75%)'
-  ]);
+  const bgSpotlight = useTransform(scrollYProgress, (progress) => {
+    if (hasRevealedHeroRef.current) {
+      return 'radial-gradient(circle at center 60%, rgba(124, 58, 237, 0.15) 0%, rgba(2, 2, 4, 0) 75%)';
+    } else {
+      if (progress < 0.2) {
+        return 'radial-gradient(circle at center 60%, rgba(124, 58, 237, 0.06) 0%, rgba(2, 2, 4, 0) 65%)';
+      }
+      if (progress < 0.9) {
+        const ratio = (progress - 0.2) / 0.7;
+        const opacity = 0.06 + ratio * (0.15 - 0.06);
+        const radius = 65 + ratio * (75 - 65);
+        return `radial-gradient(circle at center 60%, rgba(124, 58, 237, ${opacity}) 0%, rgba(2, 2, 4, 0) ${radius}%)`;
+      }
+      return 'radial-gradient(circle at center 60%, rgba(124, 58, 237, 0.15) 0%, rgba(2, 2, 4, 0) 75%)';
+    }
+  });
+
+  // Keep the Ref in sync with the state
+  useEffect(() => {
+    hasRevealedHeroRef.current = hasRevealedHero;
+  }, [hasRevealedHero]);
+
+  // Monitor scroll progress to set hasRevealedHero to true
+  useEffect(() => {
+    const unsubscribe = scrollYProgress.on("change", (latest) => {
+      if (latest > 0.85 && !hasRevealedHeroRef.current) {
+        setHasRevealedHero(true);
+      }
+    });
+    return () => unsubscribe();
+  }, [scrollYProgress]);
 
   return (
     <div ref={containerRef} style={{ position: 'relative', minHeight: '520vh', backgroundColor: '#020204' }}>
@@ -569,6 +721,32 @@ export default function Hero3D() {
                 textAlign: 'center'
               }}
             >
+              {/* Ambient Animated Glow behind branding */}
+              <motion.div
+                animate={{
+                  scale: [1, 1.15, 1],
+                  opacity: [0.18, 0.3, 0.18]
+                }}
+                transition={{
+                  duration: 6,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+                style={{
+                  position: 'absolute',
+                  width: '600px',
+                  height: '600px',
+                  background: 'radial-gradient(circle, rgba(124, 58, 237, 0.35) 0%, rgba(124, 58, 237, 0) 70%)',
+                  filter: 'blur(50px)',
+                  zIndex: -1,
+                  pointerEvents: 'none',
+                  top: '50%',
+                  left: '50%'
+                }}
+                x="-50%"
+                y="-50%"
+              />
+
               {/* Badge */}
               <div 
                 style={{
