@@ -804,7 +804,9 @@ export default function Hero3D() {
               {/* Buttons */}
               <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
                 <a 
-                  href="#/schedule" 
+                  href="https://calendly.com/mailpagenotfound-in/30min"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="btn-premium btn-premium-primary"
                   style={{ 
                     backgroundColor: 'var(--accent-purple)', 

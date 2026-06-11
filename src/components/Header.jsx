@@ -112,7 +112,9 @@ export default function Header() {
         {/* CTA Button */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
           <motion.a
-            href="#/schedule"
+            href="https://calendly.com/mailpagenotfound-in/30min"
+            target="_blank"
+            rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="btn-premium btn-premium-primary desktop-btn"
@@ -192,7 +194,9 @@ export default function Header() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: navLinks.length * 0.1, duration: 0.5 }}
-              href="#/schedule"
+              href="https://calendly.com/mailpagenotfound-in/30min"
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={() => setIsOpen(false)}
               className="btn-premium btn-premium-primary"
               style={{ marginTop: '16px', gap: '8px' }}

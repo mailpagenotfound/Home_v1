@@ -295,7 +295,9 @@ export default function AboutUs() {
                 Your online presence should grow along with everything else. Whether you're building your first website, replacing an outdated one, or finally creating something you're proud to share, we're here for the journey. Not just the launch.
               </p>
               <a 
-                href="#/schedule" 
+                href="https://calendly.com/mailpagenotfound-in/30min"
+                target="_blank"
+                rel="noopener noreferrer"
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',

@@ -223,7 +223,9 @@ export default function Portfolio() {
                     </div>
 
                     <a
-                      href="#/schedule"
+                      href="https://calendly.com/mailpagenotfound-in/30min"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="btn-premium btn-premium-primary"
                       style={{
                         marginTop: '30px',

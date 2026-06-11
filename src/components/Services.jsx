@@ -256,7 +256,9 @@ export default function Services() {
 
                 {/* Book Link Button */}
                 <a
-                  href="#/schedule"
+                  href="https://calendly.com/mailpagenotfound-in/30min"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="btn-premium btn-premium-secondary"
                   style={{
                     padding: '10px 20px',
