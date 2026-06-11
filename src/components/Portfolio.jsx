@@ -223,7 +223,7 @@ export default function Portfolio() {
                     </div>
 
                     <a
-                      href="#/contact"
+                      href="#/schedule"
                       className="btn-premium btn-premium-primary"
                       style={{
                         marginTop: '30px',

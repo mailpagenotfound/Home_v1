@@ -804,7 +804,7 @@ export default function Hero3D() {
               {/* Buttons */}
               <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
                 <a 
-                  href="#/contact" 
+                  href="#/schedule" 
                   className="btn-premium btn-premium-primary"
                   style={{ 
                     backgroundColor: 'var(--accent-purple)', 

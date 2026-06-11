@@ -1,5 +1,5 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { Canvas, useFrame, useThree } from '@react-three/fiber';
+import { useRef, useState, useEffect } from 'react';
+import { Canvas, useFrame } from '@react-three/fiber';
 import { Html } from '@react-three/drei';
 import { motion, AnimatePresence } from 'framer-motion';
 import gsap from 'gsap';
@@ -13,21 +13,21 @@ gsap.registerPlugin(ScrollTrigger);
 // -------------------------------------------------------------
 const stages = [
   {
-    title: "Invisible Start",
-    subtitle: "Your Current Website",
-    desc: "A great product hidden on a slow template that search engine crawlers ignore and visitors leave within seconds. You are invisible to the people who need you.",
+    title: "Your Business Exists. Google Doesn't Know Yet.",
+    subtitle: "New Business",
+    desc: "You've got the idea, the passion, and maybe even your first customers.\n\nBut when someone asks, \"Do you have a website?\" the conversation gets awkward.\n\nWe help you get online with a website that makes your business look as professional as the work you do.",
     color: "#b91c1c"
   },
   {
-    title: "Fast Code Foundation",
-    subtitle: "Web Engineering",
-    desc: "A custom-coded React framework built to load in milliseconds. No bloated code. A clean, premium layout that commands immediate trust and loads under 1 second.",
+    title: "Your Website Is Basically On Vacation.",
+    subtitle: "Existing Website",
+    desc: "It was launched years ago and hasn't done much since.\n\nThe design feels old, updates feel impossible, and you're not even sure what's still working.\n\nWe bring it back to life with a modern, easy-to-manage website that actually supports your business.",
     color: "#0891b2"
   },
   {
-    title: "Search Alignment",
-    subtitle: "SEO Mapping",
-    desc: "We structure your pages and schemas so search engine crawlers understand what you do. Organic search traffic starts flowing cleanly into your site.",
+    title: "Your Business Grew Up. Your Website Didn't.",
+    subtitle: "Rebuild & Redesign",
+    desc: "Your services have improved. Your brand has evolved.\n\nMeanwhile, your website is still introducing the old version of your business.\n\nWe redesign and rebuild it from the ground up so your online presence finally matches where you are today.",
     color: "#2563eb"
   },
   {
@@ -41,12 +41,6 @@ const stages = [
     subtitle: "High-Intent Campaigns",
     desc: "Laser-focused search campaigns targeting buyers at the exact moment of search. Traffic accelerates, delivering qualified inquiries to your calendar.",
     color: "#ca8a04"
-  },
-  {
-    title: "Lead Pipeline Sync",
-    subtitle: "Automation & CRM",
-    desc: "Connecting your frontend to CRM pipelines and lead sync channels. Spikes in traffic are automatically converted into qualified sales opportunities.",
-    color: "#059669"
   },
   {
     title: "The Visibility Standard",
@@ -102,7 +96,7 @@ function PulseRings({ position, color, count = 3, scaleMax = 3, active = false }
 // -------------------------------------------------------------
 // REUSABLE GLASS CARD WRAPPER
 // -------------------------------------------------------------
-function GlassCard({ children, width = 3, height = 2, borderColor = "rgba(255, 255, 255, 0.08)", glowColor = "rgba(255, 255, 255, 0.02)", title = "", ...props }) {
+function GlassCard({ children, width = 3, height = 2, borderColor = "rgba(255, 255, 255, 0.08)", glowColor = "rgba(255, 255, 255, 0.02)", title = "", opacity = 1, ...props }) {
   return (
     <group {...props}>
       {/* 3D Glass Pane */}
@@ -111,7 +105,7 @@ function GlassCard({ children, width = 3, height = 2, borderColor = "rgba(255, 2
         <meshPhysicalMaterial
           color="#040408"
           transparent
-          opacity={0.8}
+          opacity={0.8 * opacity}
           roughness={0.15}
           metalness={0.8}
           clearcoat={1.0}
@@ -128,7 +122,7 @@ function GlassCard({ children, width = 3, height = 2, borderColor = "rgba(255, 2
           color={borderColor}
           wireframe
           transparent
-          opacity={0.35}
+          opacity={0.35 * opacity}
           blending={THREE.NormalBlending}
           side={THREE.DoubleSide}
         />
@@ -156,7 +150,9 @@ function GlassCard({ children, width = 3, height = 2, borderColor = "rgba(255, 2
           fontFamily: 'var(--font-display), sans-serif',
           color: '#ffffff',
           boxSizing: 'border-box',
-          pointerEvents: 'none'
+          pointerEvents: 'none',
+          opacity: opacity,
+          transition: 'opacity 0.2s ease'
         }}>
           {title && (
             <div style={{
@@ -167,7 +163,8 @@ function GlassCard({ children, width = 3, height = 2, borderColor = "rgba(255, 2
               color: borderColor,
               borderBottom: '1px solid var(--border-dark)',
               paddingBottom: '4px',
-              marginBottom: '4px'
+              marginBottom: '4px',
+              opacity: opacity
             }}>
               {title}
             </div>
@@ -184,7 +181,7 @@ function GlassCard({ children, width = 3, height = 2, borderColor = "rgba(255, 2
 // -------------------------------------------------------------
 // 0. INITIAL STATE: YOUR BUSINESS CARD
 // -------------------------------------------------------------
-function YourBusinessCard({ active, ...props }) {
+function YourBusinessCard({ opacity = 1, ...props }) {
   return (
     <GlassCard
       width={2.6}
@@ -192,6 +189,7 @@ function YourBusinessCard({ active, ...props }) {
       borderColor="#ef4444"
       glowColor="rgba(239, 68, 68, 0.2)"
       title="Your Business"
+      opacity={opacity}
       {...props}
     >
       <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', textAlign: 'center' }}>
@@ -210,7 +208,7 @@ function YourBusinessCard({ active, ...props }) {
 // -------------------------------------------------------------
 // 1. WEBSITE DEVELOPMENT: CONSTRUCTING BROWSER MOCKUP
 // -------------------------------------------------------------
-function BrowserMockup({ buildProgress, showDashboard, ...props }) {
+function BrowserMockup({ buildProgress, showDashboard, opacity = 1, ...props }) {
   const showNavbar = buildProgress >= 0.2;
   const showHero = buildProgress >= 0.45;
   const showContent = buildProgress >= 0.7;
@@ -224,7 +222,7 @@ function BrowserMockup({ buildProgress, showDashboard, ...props }) {
         <meshPhysicalMaterial
           color="#ffffff"
           transparent
-          opacity={0.4}
+          opacity={0.4 * opacity}
           roughness={0.15}
           metalness={0.9}
           clearcoat={1.0}
@@ -240,7 +238,7 @@ function BrowserMockup({ buildProgress, showDashboard, ...props }) {
           color={showDashboard ? "#059669" : "#0891b2"}
           wireframe
           transparent
-          opacity={0.35}
+          opacity={0.35 * opacity}
           blending={THREE.NormalBlending}
         />
       </mesh>
@@ -266,7 +264,8 @@ function BrowserMockup({ buildProgress, showDashboard, ...props }) {
           color: '#ffffff',
           boxSizing: 'border-box',
           overflow: 'hidden',
-          transition: 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)'
+          transition: 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
+          opacity: opacity
         }}>
           {/* URL bar header */}
           <div style={{
@@ -469,7 +468,7 @@ function BrowserMockup({ buildProgress, showDashboard, ...props }) {
 // -------------------------------------------------------------
 // 2. SEO ACTIVATION: SEARCH ENGINE CARDS
 // -------------------------------------------------------------
-function SEOCards({ active, ...props }) {
+function SEOCards({ active, opacity = 1, ...props }) {
   if (!active) return null;
 
   return (
@@ -482,6 +481,7 @@ function SEOCards({ active, ...props }) {
         glowColor="rgba(59, 130, 246, 0.15)"
         title="SEO Activation"
         position={[2.8, 1.2, -1.0]}
+        opacity={opacity}
       >
         <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
           <div style={{ fontSize: '9px', fontWeight: 'bold', color: '#93c5fd' }}>Search Engine Rank</div>
@@ -500,6 +500,7 @@ function SEOCards({ active, ...props }) {
         glowColor="rgba(59, 130, 246, 0.15)"
         title="Organic Traffic"
         position={[2.6, -1.5, 0.8]}
+        opacity={opacity}
       >
         <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
           <div style={{ fontSize: '9px', fontWeight: 'bold', color: '#93c5fd' }}>Traffic Growth</div>
@@ -516,6 +517,7 @@ function SEOCards({ active, ...props }) {
         glowColor="rgba(59, 130, 246, 0.15)"
         title="Keyword Visibility"
         position={[-2.8, -1.0, -0.8]}
+        opacity={opacity}
       >
         <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
           <div style={{ fontSize: '9px', fontWeight: 'bold', color: '#93c5fd' }}>Indexed Keywords</div>
@@ -530,7 +532,7 @@ function SEOCards({ active, ...props }) {
 // -------------------------------------------------------------
 // 3. SOCIAL MEDIA GROWTH: POST INTERFACE CARDS
 // -------------------------------------------------------------
-function SocialCards({ active, ...props }) {
+function SocialCards({ active, opacity = 1, ...props }) {
   if (!active) return null;
 
   return (
@@ -543,6 +545,7 @@ function SocialCards({ active, ...props }) {
         glowColor="rgba(236, 72, 153, 0.15)"
         title="Instagram Campaign"
         position={[-3.0, 1.8, -0.5]}
+        opacity={opacity}
       >
         <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
           <div style={{ fontSize: '9px', fontWeight: 'bold', color: '#fbcfe8' }}>Instagram Post</div>
@@ -559,6 +562,7 @@ function SocialCards({ active, ...props }) {
         glowColor="rgba(236, 72, 153, 0.15)"
         title="Facebook Ads"
         position={[3.0, -0.3, -1.8]}
+        opacity={opacity}
       >
         <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
           <div style={{ fontSize: '9px', fontWeight: 'bold', color: '#fbcfe8' }}>Sponsored Reach</div>
@@ -575,6 +579,7 @@ function SocialCards({ active, ...props }) {
         glowColor="rgba(236, 72, 153, 0.15)"
         title="LinkedIn Growth"
         position={[-2.8, -2.2, 1.5]}
+        opacity={opacity}
       >
         <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
           <div style={{ fontSize: '9px', fontWeight: 'bold', color: '#fbcfe8' }}>B2B Authority</div>
@@ -584,9 +589,9 @@ function SocialCards({ active, ...props }) {
       </GlassCard>
 
       {/* Concentric expanding ripples around social posts */}
-      <PulseRings position={[-3.0, 1.8, -0.5]} color="#ec4899" active={active} />
-      <PulseRings position={[3.0, -0.3, -1.8]} color="#ec4899" active={active} />
-      <PulseRings position={[-2.8, -2.2, 1.5]} color="#ec4899" active={active} />
+      <PulseRings position={[-3.0, 1.8, -0.5]} color="#ec4899" active={active && opacity > 0.1} />
+      <PulseRings position={[3.0, -0.3, -1.8]} color="#ec4899" active={active && opacity > 0.1} />
+      <PulseRings position={[-2.8, -2.2, 1.5]} color="#ec4899" active={active && opacity > 0.1} />
     </group>
   );
 }
@@ -594,14 +599,14 @@ function SocialCards({ active, ...props }) {
 // -------------------------------------------------------------
 // 4. PERFORMANCE MARKETING: ADS & FORMS
 // -------------------------------------------------------------
-function FloatingLeads({ active }) {
+function FloatingLeads({ active, opacity = 1 }) {
   const [leads, setLeads] = useState([]);
   const leadsRef = useRef([]);
 
   useEffect(() => {
     if (!active) {
-      setLeads([]);
-      return;
+      const handle = setTimeout(() => setLeads([]), 0);
+      return () => clearTimeout(handle);
     }
     
     const labels = ["New Lead 🎉", "New Inquiry 📬", "Strategy Call Booked 📅", "Demo Scheduled 🚀"];
@@ -637,7 +642,7 @@ function FloatingLeads({ active }) {
     <group>
       {leads.map((lead) => {
         if (lead.progress >= 1.0) return null;
-        const opacity = 1.0 - lead.progress;
+        const leadOpacity = (1.0 - lead.progress) * opacity;
         return (
           <Html
             key={lead.id}
@@ -655,7 +660,7 @@ function FloatingLeads({ active }) {
               boxShadow: '0 4px 15px rgba(234, 179, 8, 0.4)',
               whiteSpace: 'nowrap',
               fontFamily: 'var(--font-display)',
-              opacity: opacity,
+              opacity: leadOpacity,
               transform: `scale(${1 + lead.progress * 0.2})`,
               transition: 'opacity 0.1s linear'
             }}>
@@ -668,7 +673,7 @@ function FloatingLeads({ active }) {
   );
 }
 
-function PerformanceCards({ active, ...props }) {
+function PerformanceCards({ active, opacity = 1, ...props }) {
   if (!active) return null;
 
   return (
@@ -681,6 +686,7 @@ function PerformanceCards({ active, ...props }) {
         glowColor="rgba(234, 179, 8, 0.15)"
         title="Search Engine Ads"
         position={[2.8, 2.2, -1.0]}
+        opacity={opacity}
       >
         <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
           <div style={{ fontSize: '8px', background: '#eab308', color: '#000', padding: '1px 3px', borderRadius: '2px', alignSelf: 'flex-start', fontWeight: 'bold' }}>Ad</div>
@@ -697,6 +703,7 @@ function PerformanceCards({ active, ...props }) {
         glowColor="rgba(234, 179, 8, 0.15)"
         title="Meta Sponsored"
         position={[-2.8, 0.8, -1.5]}
+        opacity={opacity}
       >
         <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
           <div style={{ fontSize: '9px', fontWeight: 'bold', color: '#fef08a' }}>Meta Campaign</div>
@@ -713,6 +720,7 @@ function PerformanceCards({ active, ...props }) {
         glowColor="rgba(234, 179, 8, 0.15)"
         title="Lead Funnel Capture"
         position={[0, -2.3, 0.5]}
+        opacity={opacity}
       >
         <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', fontSize: '8px' }}>
           <div style={{ background: 'rgba(255,255,255,0.05)', padding: '4px', borderRadius: '4px', border: '1px solid rgba(255,255,255,0.1)', color: '#94a3b8' }}>
@@ -728,7 +736,7 @@ function PerformanceCards({ active, ...props }) {
       </GlassCard>
 
       {/* Floating Lead Bubbles */}
-      <FloatingLeads active={active} />
+      <FloatingLeads active={active} opacity={opacity} />
     </group>
   );
 }
@@ -736,7 +744,7 @@ function PerformanceCards({ active, ...props }) {
 // -------------------------------------------------------------
 // 5. ANALYTICS & GROWTH SYSTEM
 // -------------------------------------------------------------
-function AnalyticsSystem({ active, progress, ...props }) {
+function AnalyticsSystem({ active, progress, opacity = 1, ...props }) {
   const barsRef = useRef([]);
 
   // Normalize Stage 5 progress (t from 0 to 1)
@@ -775,7 +783,7 @@ function AnalyticsSystem({ active, progress, ...props }) {
                 roughness={0.2}
                 metalness={0.8}
                 transparent
-                opacity={0.8}
+                opacity={0.8 * opacity}
               />
             </mesh>
           );
@@ -795,12 +803,12 @@ function AnalyticsSystem({ active, progress, ...props }) {
                 0.6, -1.0, -0.5,
                 1.4, -0.6, -0.5,
                 2.2, 0.2, -0.5,
-              ]).slice(0, Math.max(6, Math.floor(t * 18))),
+              ]).slice(0, Math.max(2, Math.floor(t * 6)) * 3),
               3
             ]}
           />
         </bufferGeometry>
-        <lineBasicMaterial attach="material" color="#10b981" linewidth={3.0} transparent opacity={0.8} />
+        <lineBasicMaterial attach="material" color="#10b981" linewidth={3.0} transparent opacity={0.8 * opacity} />
       </line>
 
       {/* Conversion Rate Meter Card */}
@@ -811,6 +819,7 @@ function AnalyticsSystem({ active, progress, ...props }) {
         glowColor="rgba(16, 185, 129, 0.15)"
         title="Conversion Metrics"
         position={[2.0, 2.0, 0]}
+        opacity={opacity}
       >
         <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
           <div style={{ fontSize: '9px', fontWeight: 'bold', color: '#a7f3d0' }}>Conversion Rate (CVR)</div>
@@ -827,6 +836,7 @@ function AnalyticsSystem({ active, progress, ...props }) {
         glowColor="rgba(16, 185, 129, 0.15)"
         title="ROI Analytics"
         position={[-2.0, 2.0, 0.5]}
+        opacity={opacity}
       >
         <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
           <div style={{ fontSize: '9px', fontWeight: 'bold', color: '#a7f3d0' }}>Return on Ad Spend</div>
@@ -841,7 +851,7 @@ function AnalyticsSystem({ active, progress, ...props }) {
 // -------------------------------------------------------------
 // DYNAMIC GLOWING DATA PIPELINES (Stage 5+)
 // -------------------------------------------------------------
-function ConnectionLines({ active, progress }) {
+function ConnectionLines({ active, progress, opacity = 1 }) {
   if (!active) return null;
 
   const nodes = {
@@ -877,7 +887,7 @@ function ConnectionLines({ active, progress }) {
     [nodes.lead, nodes.an2]
   ];
 
-  const opacity = Math.min(0.65, (progress - 0.75) * 4.5);
+  const calculatedOpacity = Math.min(0.65, (progress - 0.75) * 4.5) * opacity;
 
   return (
     <group>
@@ -888,7 +898,7 @@ function ConnectionLines({ active, progress }) {
             attach="material"
             color="#10b981"
             transparent
-            opacity={opacity}
+            opacity={calculatedOpacity}
             linewidth={1.5}
             blending={THREE.AdditiveBlending}
           />
@@ -901,7 +911,7 @@ function ConnectionLines({ active, progress }) {
 // -------------------------------------------------------------
 // PARTICLE FLOW ENGINE
 // -------------------------------------------------------------
-function FlowParticles({ progress }) {
+function FlowParticles({ progress, opacity = 1 }) {
   const count = 300;
   const geomRef = useRef();
   const pointsRef = useRef();
@@ -1073,6 +1083,7 @@ function FlowParticles({ progress }) {
         size={0.22}
         map={getDotTexture()}
         transparent
+        opacity={opacity}
         vertexColors
         blending={THREE.AdditiveBlending}
         depthWrite={false}
@@ -1084,7 +1095,7 @@ function FlowParticles({ progress }) {
 // -------------------------------------------------------------
 // MAIN R3F 3D SCENE CONFIGURATION
 // -------------------------------------------------------------
-function DiscoveryScene({ progress }) {
+function DiscoveryScene({ progress, scrollProgress }) {
   const businessCardRef = useRef();
   const browserRef = useRef();
   const seoGroupRef = useRef();
@@ -1096,63 +1107,53 @@ function DiscoveryScene({ progress }) {
     const p = progress.current;
     const time = clock.getElapsedTime();
 
-    // 1. Dynamic Cinematic Camera Paths per stage
+    // 1. Dynamic Cinematic Camera Paths per stage (6 stages)
     let targetCamPos = new THREE.Vector3(0, 0, 7.5);
     let targetLookAt = new THREE.Vector3(0, 0, 0);
 
-    if (p < 0.14) {
-      // Stage 0: Initial State - zoom in on isolated business card
-      const t = p / 0.14;
+    if (p < 0.167) {
+      // Stage 0: Initial State
       targetCamPos.set(0, 0.2, 5.0);
       targetLookAt.set(0, 0, 0);
-    } else if (p < 0.28) {
-      // Stage 1: Website Foundation - step back for browser assembly
-      const t = (p - 0.14) / 0.14;
+    } else if (p < 0.333) {
+      // Stage 1: Website Foundation
+      const t = (p - 0.167) / 0.166;
       targetCamPos.set(0, 0, THREE.MathUtils.lerp(5.0, 6.5, t));
       targetLookAt.set(0, 0, 0);
-    } else if (p < 0.42) {
-      // Stage 2: SEO Activation - orbit slightly right
-      const t = (p - 0.28) / 0.14;
+    } else if (p < 0.500) {
+      // Stage 2: SEO Mapping
+      const t = (p - 0.333) / 0.167;
       targetCamPos.set(
         THREE.MathUtils.lerp(0, 1.8, t),
         THREE.MathUtils.lerp(0, 0.5, t),
         THREE.MathUtils.lerp(6.5, 6.0, t)
       );
       targetLookAt.set(0, 0, 0);
-    } else if (p < 0.57) {
-      // Stage 3: Social Media - orbit left to feature social platforms
-      const t = (p - 0.42) / 0.15;
+    } else if (p < 0.667) {
+      // Stage 3: Visual Presence
+      const t = (p - 0.500) / 0.167;
       targetCamPos.set(
         THREE.MathUtils.lerp(1.8, -1.8, t),
         THREE.MathUtils.lerp(0.5, -0.5, t),
         THREE.MathUtils.lerp(6.0, 6.0, t)
       );
       targetLookAt.set(0, 0, 0);
-    } else if (p < 0.71) {
-      // Stage 4: Performance Marketing - low angle, looking up
-      const t = (p - 0.57) / 0.14;
+    } else if (p < 0.833) {
+      // Stage 4: Paid Ads & Forms
+      const t = (p - 0.667) / 0.166;
       targetCamPos.set(
         THREE.MathUtils.lerp(-1.8, 0, t),
         THREE.MathUtils.lerp(-0.5, -1.2, t),
         THREE.MathUtils.lerp(6.0, 5.5, t)
       );
       targetLookAt.set(0, 0, 0);
-    } else if (p < 0.85) {
-      // Stage 5: Analytics - pull back to see bars & lines
-      const t = (p - 0.71) / 0.14;
-      targetCamPos.set(
-        THREE.MathUtils.lerp(0, 1.0, t),
-        THREE.MathUtils.lerp(-1.2, 1.5, t),
-        THREE.MathUtils.lerp(5.5, 5.0, t)
-      );
-      targetLookAt.set(0, -0.5, 0);
     } else {
-      // Stage 6: Final wide angle connected digital ecosystem
-      const t = (p - 0.85) / 0.15;
+      // Stage 5: Final wide angle connected digital ecosystem
+      const t = (p - 0.833) / 0.167;
       targetCamPos.set(
-        THREE.MathUtils.lerp(1.0, 0, t),
-        THREE.MathUtils.lerp(1.5, 3.2, t),
-        THREE.MathUtils.lerp(5.0, 9.2, t)
+        THREE.MathUtils.lerp(0, 0, t),
+        THREE.MathUtils.lerp(-1.2, 3.2, t),
+        THREE.MathUtils.lerp(5.5, 9.2, t)
       );
       targetLookAt.set(0, 0.4, 0);
     }
@@ -1166,10 +1167,10 @@ function DiscoveryScene({ progress }) {
 
     // 2. Business Card Scaling (Shrinks to 0 as Stage 1 triggers)
     if (businessCardRef.current) {
-      if (p < 0.14) {
+      if (p < 0.167) {
         businessCardRef.current.scale.setScalar(1.0);
-      } else if (p < 0.22) {
-        const s = 1.0 - (p - 0.14) / 0.08;
+      } else if (p < 0.25) {
+        const s = 1.0 - (p - 0.167) / 0.083;
         businessCardRef.current.scale.setScalar(s);
       } else {
         businessCardRef.current.scale.setScalar(0);
@@ -1179,10 +1180,10 @@ function DiscoveryScene({ progress }) {
 
     // 3. Browser Mockup Scaling (Scales up during Stage 1)
     if (browserRef.current) {
-      if (p < 0.14) {
+      if (p < 0.167) {
         browserRef.current.scale.setScalar(0);
-      } else if (p < 0.22) {
-        const s = (p - 0.14) / 0.08;
+      } else if (p < 0.25) {
+        const s = (p - 0.167) / 0.083;
         browserRef.current.scale.setScalar(s);
       } else {
         browserRef.current.scale.setScalar(1.0);
@@ -1193,10 +1194,10 @@ function DiscoveryScene({ progress }) {
 
     // 4. SEO Cards scaling
     if (seoGroupRef.current) {
-      if (p < 0.28) {
+      if (p < 0.333) {
         seoGroupRef.current.scale.setScalar(0);
-      } else if (p < 0.35) {
-        const s = (p - 0.28) / 0.07;
+      } else if (p < 0.417) {
+        const s = (p - 0.333) / 0.084;
         seoGroupRef.current.scale.setScalar(s);
       } else {
         seoGroupRef.current.scale.setScalar(1.0);
@@ -1206,10 +1207,10 @@ function DiscoveryScene({ progress }) {
 
     // 5. Social Cards scaling
     if (socialGroupRef.current) {
-      if (p < 0.42) {
+      if (p < 0.500) {
         socialGroupRef.current.scale.setScalar(0);
-      } else if (p < 0.49) {
-        const s = (p - 0.42) / 0.07;
+      } else if (p < 0.583) {
+        const s = (p - 0.500) / 0.083;
         socialGroupRef.current.scale.setScalar(s);
       } else {
         socialGroupRef.current.scale.setScalar(1.0);
@@ -1219,10 +1220,10 @@ function DiscoveryScene({ progress }) {
 
     // 6. Performance Cards scaling
     if (perfGroupRef.current) {
-      if (p < 0.57) {
+      if (p < 0.667) {
         perfGroupRef.current.scale.setScalar(0);
-      } else if (p < 0.64) {
-        const s = (p - 0.57) / 0.07;
+      } else if (p < 0.750) {
+        const s = (p - 0.667) / 0.083;
         perfGroupRef.current.scale.setScalar(s);
       } else {
         perfGroupRef.current.scale.setScalar(1.0);
@@ -1232,10 +1233,10 @@ function DiscoveryScene({ progress }) {
 
     // 7. Analytics System scaling
     if (analyticsGroupRef.current) {
-      if (p < 0.71) {
+      if (p < 0.833) {
         analyticsGroupRef.current.scale.setScalar(0);
-      } else if (p < 0.78) {
-        const s = (p - 0.71) / 0.07;
+      } else if (p < 0.917) {
+        const s = (p - 0.833) / 0.084;
         analyticsGroupRef.current.scale.setScalar(s);
       } else {
         analyticsGroupRef.current.scale.setScalar(1.0);
@@ -1243,8 +1244,20 @@ function DiscoveryScene({ progress }) {
     }
   });
 
-  const p = progress.current;
-  const buildProgress = p >= 0.14 && p < 0.28 ? (p - 0.14) / 0.14 : (p >= 0.28 ? 1.0 : 0.0);
+  const pRef = progress.current;
+  const buildProgress = pRef >= 0.167 && pRef < 0.333 ? (pRef - 0.167) / 0.166 : (pRef >= 0.333 ? 1.0 : 0.0);
+
+  const sp = scrollProgress;
+  
+  let fadeFactor = 1.0;
+  if (sp >= 0.833) {
+    fadeFactor = Math.max(0, 1 - (sp - 0.833) / (0.93 - 0.833));
+  }
+
+  let bgOpacity = 1.0;
+  if (sp >= 0.833) {
+    bgOpacity = 0.15 + 0.85 * Math.max(0, 1 - (sp - 0.833) / (0.93 - 0.833));
+  }
 
   return (
     <>
@@ -1257,39 +1270,39 @@ function DiscoveryScene({ progress }) {
 
       {/* 0. Your Business Card (Initial State) */}
       <group ref={businessCardRef} position={[0, 0.1, 0]}>
-        <YourBusinessCard active={p < 0.22} />
+        <YourBusinessCard active={pRef < 0.25} opacity={fadeFactor} />
       </group>
 
       {/* 1. Website Chassis Mockup */}
       <group ref={browserRef} position={[0, 0.1, 0]}>
-        <BrowserMockup buildProgress={buildProgress} showDashboard={p >= 0.71} />
+        <BrowserMockup buildProgress={buildProgress} showDashboard={sp >= 0.833} opacity={bgOpacity} />
       </group>
 
       {/* 2. SEO Cards */}
       <group ref={seoGroupRef}>
-        <SEOCards active={p >= 0.28} />
+        <SEOCards active={sp >= 0.333} opacity={fadeFactor} />
       </group>
 
       {/* 3. Social Media Cards */}
       <group ref={socialGroupRef}>
-        <SocialCards active={p >= 0.42} />
+        <SocialCards active={sp >= 0.500} opacity={fadeFactor} />
       </group>
 
       {/* 4. Paid Ads & Forms */}
       <group ref={perfGroupRef}>
-        <PerformanceCards active={p >= 0.57} />
+        <PerformanceCards active={sp >= 0.667} opacity={fadeFactor} />
       </group>
 
       {/* 5. Live Analytics System */}
       <group ref={analyticsGroupRef}>
-        <AnalyticsSystem active={p >= 0.71} progress={p} />
+        <AnalyticsSystem active={sp >= 0.833} progress={sp} opacity={fadeFactor} />
       </group>
 
       {/* Interconnection Grid Pipelines */}
-      <ConnectionLines active={p >= 0.71} progress={p} />
+      <ConnectionLines active={sp >= 0.833} progress={sp} opacity={bgOpacity} />
 
       {/* Active Flowing Particles */}
-      <FlowParticles progress={progress} />
+      <FlowParticles progress={progress} opacity={bgOpacity} />
     </>
   );
 }
@@ -1338,6 +1351,23 @@ export default function DiscoveryJourney() {
     Math.floor(scrollProgress * stages.length)
   );
 
+  const sp = scrollProgress;
+  
+  let subLabelOpacity = 0;
+  if (sp >= 0.88) {
+    subLabelOpacity = Math.min(1, (sp - 0.88) / (0.93 - 0.88));
+  }
+
+  let headlineOpacity = 0;
+  if (sp >= 0.91) {
+    headlineOpacity = Math.min(1, (sp - 0.91) / (0.96 - 0.91));
+  }
+
+  let descOpacity = 0;
+  if (sp >= 0.94) {
+    descOpacity = Math.min(1, (sp - 0.94) / (0.99 - 0.94));
+  }
+
   return (
     <div
       ref={containerRef}
@@ -1378,7 +1408,7 @@ export default function DiscoveryJourney() {
           >
             <color attach="background" args={["#000000"]} />
             <fogExp2 attach="fog" args={["#000000", 0.04]} />
-            <DiscoveryScene progress={progressRef} />
+            <DiscoveryScene progress={progressRef} scrollProgress={scrollProgress} />
           </Canvas>
         </div>
 
@@ -1494,7 +1524,7 @@ export default function DiscoveryJourney() {
                   </div>
                   
                   <h3 style={{
-                    fontSize: 'clamp(36px, 4.5vw, 52px)',
+                    fontSize: (idx === 0 || idx === 1 || idx === 2) ? 'clamp(26px, 3.5vw, 38px)' : 'clamp(36px, 4.5vw, 52px)',
                     fontWeight: 900,
                     fontFamily: 'var(--font-display)',
                     color: 'var(--text-dark)',
@@ -1505,10 +1535,11 @@ export default function DiscoveryJourney() {
                   </h3>
                   
                   <p style={{
-                    fontSize: '21px',
+                    fontSize: (idx === 0 || idx === 1 || idx === 2) ? '16px' : '21px',
                     color: '#ffffff',
                     lineHeight: '1.6',
-                    maxWidth: '520px'
+                    maxWidth: '520px',
+                    whiteSpace: 'pre-line'
                   }}>
                     {stage.desc}
                   </p>
@@ -1539,8 +1570,8 @@ export default function DiscoveryJourney() {
             className="journey-final-panel"
           >
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
+              initial={{ scale: 0.98 }}
+              animate={{ scale: 1 }}
               transition={{ duration: 0.8 }}
               style={{
                 maxWidth: '850px',
@@ -1556,7 +1587,9 @@ export default function DiscoveryJourney() {
                 letterSpacing: '0.25em',
                 fontWeight: 700,
                 color: 'var(--accent-purple)',
-                fontFamily: 'var(--font-display)'
+                fontFamily: 'var(--font-display)',
+                opacity: subLabelOpacity,
+                transition: 'opacity 0.4s ease'
               }}>
                 Consolidated Presence
               </span>
@@ -1567,7 +1600,9 @@ export default function DiscoveryJourney() {
                 fontFamily: 'var(--font-display)',
                 color: 'var(--text-dark)',
                 lineHeight: 1.05,
-                letterSpacing: '-0.04em'
+                letterSpacing: '-0.04em',
+                opacity: headlineOpacity,
+                transition: 'opacity 0.4s ease'
               }}>
                 Connected &amp; <span className="text-gradient-purple-blue">Discovered</span>
               </h2>
@@ -1577,7 +1612,9 @@ export default function DiscoveryJourney() {
                 color: 'var(--text-dark-sub)',
                 lineHeight: '1.6',
                 maxWidth: '620px',
-                margin: '8px auto 0 auto'
+                margin: '8px auto 0 auto',
+                opacity: descOpacity,
+                transition: 'opacity 0.4s ease'
               }}>
                 Your business is no longer a hidden island. It is the core of an active, compounding digital engine scaling 24/7.
               </p>

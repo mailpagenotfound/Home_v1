@@ -112,32 +112,30 @@ This document contains a comprehensive, section-by-section transcription of the 
 * **Conclusion Narrative**:
   > Digital obscurity is a silent tax on great products. If your target customers are searching for your solutions and finding your competitors instead, you are losing pipeline every day. We started PageNotFound to solve this exact problem: engineering custom code that commands rank and drives active inquiries.
 
----
+
+
 
 ## 4. Digital Discovery Journey (3D Flow Ecosystem)
 * **Component File**: [DiscoveryJourney.jsx](file:///d:/pagenotfound/src/components/DiscoveryJourney.jsx)
 * **Visual Presentation**: Spliscreen structure featuring a left side narration block and a right side 3D Canvas rendering data nodes, glowing pipelines, rising lead notifications, and performance graphs representing a business's digital transition.
 
 ### Narrative Left Panel Progression Stages
-1. **Invisible Start**
-   * Category: `Your Current Website`
-   * Description: `A great product hidden on a slow template that search engine crawlers ignore and visitors leave within seconds. You are invisible to the people who need you.`
-2. **Fast Code Foundation**
-   * Category: `Web Engineering`
-   * Description: `A custom-coded React framework built to load in milliseconds. No bloated code. A clean, premium layout that commands immediate trust and loads under 1 second.`
-3. **Search Alignment**
-   * Category: `SEO Mapping`
-   * Description: `We structure your pages and schemas so search engine crawlers understand what you do. Organic search traffic starts flowing cleanly into your site.`
+1. **Your Business Exists. Google Doesn't Know Yet.**
+   * Category: `New Business`
+   * Description: `You've got the idea, the passion, and maybe even your first customers. But when someone asks, "Do you have a website?" the conversation gets awkward. We help you get online with a website that makes your business look as professional as the work you do.`
+2. **Your Website Is Basically On Vacation.**
+   * Category: `Existing Website`
+   * Description: `It was launched years ago and hasn't done much since. The design feels old, updates feel impossible, and you're not even sure what's still working. We bring it back to life with a modern, easy-to-manage website that actually supports your business.`
+3. **Your Business Grew Up. Your Website Didn't.**
+   * Category: `Rebuild & Redesign`
+   * Description: `Your services have improved. Your brand has evolved. Meanwhile, your website is still introducing the old version of your business. We redesign and rebuild it from the ground up so your online presence finally matches where you are today.`
 4. **Credibility & Authority**
    * Category: `Visual Presence`
    * Description: `Generous whitespace, premium typography, and structured content assets that build visual trust, converting passive readers into interested prospects.`
 5. **Active Lead Funnels**
    * Category: `High-Intent Campaigns`
    * Description: `Laser-focused search campaigns targeting buyers at the exact moment of search. Traffic accelerates, delivering qualified inquiries to your calendar.`
-6. **Lead Pipeline Sync**
-   * Category: `Automation & CRM`
-   * Description: `Connecting your frontend to CRM pipelines and lead sync channels. Spikes in traffic are automatically converted into qualified sales opportunities.`
-7. **The Visibility Standard** (Final Centered Stage)
+6. **The Visibility Standard** (Final Centered Stage)
    * Category: `Consolidated Presence` / `Compounding Growth`
    * Title: `Connected & Discovered`
    * Description: `Your business is no longer a hidden island. It is the core of an active, compounding digital engine scaling 24/7.`
@@ -206,10 +204,10 @@ This document contains a comprehensive, section-by-section transcription of the 
 * **Visual Presentation**: Interactive sidebar timeline tracking user scroll depth, synchronized with live visual diagnostics and active crawl logs.
 
 ### Timeline Steps
-1. **Phase I: Crawl & Bottleneck Discovery**
+1. **Phase I: Business & Website Discovery**
    * Action Badge: `Discover`
-   * Sub-Heading: `Deconstruct your current organic footprints.`
-   * Description: `Before engineering any code, we crawl your current site from scratch. We isolate indexation bottlenecks, rendering errors, slow core web vitals, and crawl sitemap paths to define a clear, custom roadmap.`
+   * Sub-Heading: `Understanding Where You Are Today.`
+   * Description: `We start by learning about your business, your goals, and the challenges you're facing online. Whether you're launching your first website, improving an existing one, or planning a complete rebuild, we create a clear roadmap before any design or development begins.`
    * Deliverables:
      * Full sitemap crawl indexation analysis
      * Search query cluster mapping
@@ -271,46 +269,87 @@ This document contains a comprehensive, section-by-section transcription of the 
 * **Visual Presentation**: Interactive capability card switches displaying deliverables alongside a comprehensive bespoke vs template agency comparison grid.
 
 ### Services Catalogue
-1. **Search Index Audit & Setup**
-   * Tagline: `Search engines must read your code to rank your pages.`
-   * Description: `A beautiful site is useless if it is invisible to search engines. We audit your codebase structure and fix rendering bottlenecks so search engines can index your site easily and naturally.`
+1. **Website Designing**
+   * Tagline: `Custom user interface design tailored to your brand.`
+   * Description: `We design bespoke layouts from scratch with rich typography, generous spacing, and interactive flow. No generic templates, no cookie-cutter page-builders.`
    * Deliverables:
-     * Code and tag layout adjustments for indexing
-     * Clean structure mapping for sitemaps and links
-     * Fixing hidden rendering blocks that delay crawling
-     * Setting up search schemas so search engine crawlers read details
-     * Continuous checks to prevent search indexing errors
-   * Inquire Button: `Inquire About This Service`
-
-2. **Intent Mapping & Campaigns**
-   * Tagline: `Attract active buyers, ignore vanity clicks.`
-   * Description: `We design campaigns that target queries representing genuine buying interest. We prioritize bringing you qualified prospects rather than empty clicks.`
+     * Brand color identities
+     * Typography systems
+     * Intuitive navigation paths
+     * Custom UI design assets
+     * Interactive prototypes
+2. **Website Maintenance**
+   * Tagline: `Ensuring peak performance and structural stability.`
+   * Description: `We keep your site running smoothly with regular code audits, performance updates, sitemap management, and dependency checks.`
    * Deliverables:
-     * Direct search-intent query alignment maps
-     * High-converting, lightning-fast landing structures
-     * Qualified inquiry capture and attribution setup
-     * Split-testing pages for optimal conversions
-     * Strategic allocation to lower acquisition costs
-
-3. **Custom Brand & Layout Design**
-   * Tagline: `Visual layouts that command immediate trust.`
-   * Description: `We build custom-designed layouts with rich typography and breathing room that represent your brand as a market authority. No templates, no cookie-cutter presets.`
+     * Regular page performance audits
+     * Core Web Vitals optimizations
+     * Sitemap validation & index checks
+     * Security patches & package updates
+     * Rapid technical support & bug resolutions
+3. **Website Redesigning**
+   * Tagline: `Rebuilding your online presence for where you are today.`
+   * Description: `We audit your legacy website and rebuild it from the ground up as a fast, semantic React application that aligns with your modern business objectives.`
    * Deliverables:
-     * Bespoke logo design and color identities
-     * Intuitive navigation patterns and spacing scales
-     * Consistent typography rules that guide attention
-     * Custom interactive elements that capture focus
-     * Figma concepts coded directly into clean React
-
-4. **Sales Pipeline Integrations**
-   * Tagline: `Sync web traffic directly to your sales CRM.`
-   * Description: `We connect your website forms and touchpoints with your CRM systems and databases. When leads come in, your sales workflow fires off immediately.`
+     * Codebase modernization & cleanup
+     * Speed & performance architecture rebuilds
+     * Clean content migration & sitemap redirects
+     * Modern design systems & responsiveness
+     * Legacy markup optimization
+4. **Digital Marketing**
+   * Tagline: `Targeted campaigns that reach active buyers.`
+   * Description: `We align your brand with digital search patterns, prioritizing high-intent traffic sources to capture qualified pipeline growth.`
    * Deliverables:
-     * Lead forms syncing directly to HubSpot or Salesforce
-     * Automated notifications via Slack or email webhooks
-     * Analytics reporting mapping calls to source channels
-     * Connecting scheduling widgets like Calendly
-     * Custom webhooks bridging leads to customer databases
+     * Target audience & market research
+     * Conversion path design & landing optimizations
+     * Multi-channel acquisition strategies
+     * Strategic content marketing roadmaps
+     * Pipeline value tracking & ROI reviews
+5. **Ads (Google and Meta)**
+   * Tagline: `High-performance search ads and sponsored campaigns.`
+   * Description: `We manage ad placement and content copy on Google and Meta, targeting buyers at the exact moment of intent to lower acquisition costs.`
+   * Deliverables:
+     * Search Engine Marketing (SEM) query targeting
+     * Social sponsored campaigns & audience filters
+     * Bespoke ad copy & creative setups
+     * Lead capture tracking & attribution maps
+     * Periodic campaign scaling reports
+6. **SEO**
+   * Tagline: `Semantic crawl setups that search engines trust.`
+   * Description: `We write clean semantic code, set up structured JSON-LD schemas, and build indexable sitemaps to ensure search engines crawl and rank your pages naturally.`
+   * Deliverables:
+     * Semantic HTML5 structure verification
+     * JSON-LD structured schema injections
+     * Sitemap generation & crawling index checks
+     * Search Console monitoring & error resolving
+     * High-intent search query ranking maps
+7. **Lead Generation**
+   * Tagline: `Capturing high-intent prospects efficiently.`
+   * Description: `We build conversion-focused layouts, onboarding questionnaires, and interactive requirements forms that encourage user actions.`
+   * Deliverables:
+     * Intent-driven onboarding questionnaires
+     * Responsive briefing builder forms
+     * Visitor capture flow UX reviews
+     * Attribution setups for traffic sources
+     * Friction-free input validations
+8. **Lead Conversion**
+   * Tagline: `Turning traffic streams into active sales pipeline.`
+   * Description: `We design user flows that qualify incoming traffic, encouraging prospects to schedule strategy calls directly onto your calendar.`
+   * Deliverables:
+     * Optimized strategy call booking triggers
+     * Bespoke timeslot scheduler interfaces
+     * Lead qualifying questionnaires
+     * Conversion Rate Optimization (CRO) tests
+     * Attribution connection to sales pipeline
+9. **Platform Maintenance and Managing**
+   * Tagline: `Full-service cloud support and systems monitoring.`
+   * Description: `We manage and monitor your application server infrastructure, database triggers, API integrations, and webhook pipelines for zero downtime.`
+   * Deliverables:
+     * Cloud hosting & server monitoring
+     * Database connection checks
+     * API & webhook pipeline setups
+     * CRM synchronization & email bridges
+     * Continuous uptime surveillance
 
 ### Agency Comparison Matrix
 | Operational Pillar | Traditional Template Agency | PageNotFound Bespoke Pipelines |

@@ -10,8 +10,10 @@ import AboutUs from './components/AboutUs';
 import Services from './components/Services';
 import Portfolio from './components/Portfolio';
 import ContactUs from './components/ContactUs';
+import Schedule from './components/Schedule';
 
 export default function App() {
+
   const [currentHash, setCurrentHash] = useState(window.location.hash || '#/');
 
   // Initialize Lenis Smooth Scroll
@@ -105,6 +107,18 @@ export default function App() {
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
           >
             <ContactUs />
+          </motion.div>
+        );
+      case '#/schedule':
+        return (
+          <motion.div
+            key="schedule"
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -15 }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <Schedule />
           </motion.div>
         );
       case '#/':

@@ -37,7 +37,13 @@ export default function ProblemSection() {
   const bgFilter = useTransform(
     scrollYProgress,
     [0, 0.5, 1],
-    ["blur(15px) brightness(22%) contrast(98%) opacity(40%)", "blur(8px) brightness(18%) contrast(100%) opacity(40%)", "blur(15px) brightness(22%) contrast(98%) opacity(40%)"]
+    ["blur(15px) brightness(22%) contrast(98%)", "blur(8px) brightness(18%) contrast(100%)", "blur(15px) brightness(22%) contrast(98%)"]
+  );
+  // Fade out background completely while quotes are active to ensure readability
+  const bgOpacity = useTransform(
+    scrollYProgress,
+    [0, 0.08, 0.92, 0.98],
+    [0.4, 0, 0, 0.4]
   );
 
   return (
@@ -73,7 +79,8 @@ export default function ProblemSection() {
             left: 0,
             y: bgY,
             scale: bgScale,
-            filter: bgFilter
+            filter: bgFilter,
+            opacity: bgOpacity
           }}
         />
         {/* Cinematic vignette & blend overlays */}
@@ -172,7 +179,7 @@ export default function ProblemSection() {
                   marginBottom: '16px',
                 }}
               >
-                "You spend $20,000 on a custom visual template..."
+                "You've outgrown the website you launched years ago..."
               </motion.h2>
               <motion.h2
                 style={{
@@ -186,7 +193,7 @@ export default function ProblemSection() {
                   textShadow: '0 0 25px rgba(239, 68, 68, 0.35)'
                 }}
               >
-                But search engines don't even know you exist.
+                But it's still the first impression people see.
               </motion.h2>
             </div>
 
@@ -204,7 +211,7 @@ export default function ProblemSection() {
                   marginBottom: '16px',
                 }}
               >
-                "You hire an agency and get lists of target keywords..."
+                "You send people to your website every day..."
               </motion.h2>
               <motion.h2
                 style={{
@@ -218,7 +225,7 @@ export default function ProblemSection() {
                   textShadow: '0 0 25px rgba(245, 158, 11, 0.35)'
                 }}
               >
-                But your organic traffic doesn't actually budge.
+                But you're not proud of what they see.
               </motion.h2>
             </div>
 
@@ -236,7 +243,7 @@ export default function ProblemSection() {
                   marginBottom: '16px',
                 }}
               >
-                "You write blogs, share posts, and publish code..."
+                "You've built a great business..."
               </motion.h2>
               <motion.h2
                 style={{
@@ -250,7 +257,7 @@ export default function ProblemSection() {
                   textShadow: '0 0 25px rgba(236, 72, 153, 0.35)'
                 }}
               >
-                But your booking calendar remains completely silent.
+                But your website doesn't reflect it.
               </motion.h2>
             </div>
 

@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, Compass, Rocket, Activity, TrendingUp, Code, CheckCircle, Cpu, Zap, ArrowUpRight } from 'lucide-react';
+import { CheckCircle } from 'lucide-react';
 
 export default function ProcessSection() {
   const [activeStep, setActiveStep] = useState(0);
@@ -9,61 +9,65 @@ export default function ProcessSection() {
     {
       num: "01",
       phase: "Phase I",
-      title: "Crawl & Bottleneck Discovery",
-      badge: "Discover",
+      title: "Business & Website Discovery",
+      badge: "Discovery",
       color: "var(--accent-purple)",
       bgGlow: "rgba(139, 92, 246, 0.05)",
-      headline: "Deconstruct your current organic footprints.",
-      desc: "Before engineering any code, we crawl your current site from scratch. We isolate indexation bottlenecks, rendering errors, slow core web vitals, and crawl sitemap paths to define a clear, custom roadmap.",
+      headline: "Understanding Where You Are Today.",
+      desc: "Every project starts with understanding your business, goals, audience, and current online presence. Whether you're launching a new business, updating an existing website, or planning a complete redesign, we identify opportunities, challenges, and the best path forward.",
       deliverables: [
-        "Full sitemap crawl indexation analysis",
-        "Search query cluster mapping",
-        "Competitor structural bottleneck audit"
+        "Business discovery session",
+        "Website audit (if applicable)",
+        "Competitor research",
+        "Project roadmap & recommendations"
       ]
     },
     {
       num: "02",
       phase: "Phase II",
-      title: "Conversion-Bound Intent Mapping",
+      title: "Website Strategy & Structure",
       badge: "Plan",
       color: "var(--accent-blue)",
       bgGlow: "rgba(59, 130, 246, 0.05)",
-      headline: "Tailored structures for active buyers.",
-      desc: "We align your pages not by keyword-stuffing spreadsheets, but by direct user intent. We build detailed search paths connecting buyer queries to customized landing layouts that drive conversions, not vanity impressions.",
+      headline: "Planning before designing.",
+      desc: "A great website isn't built page by page. It's planned page by page. We create a clear website structure, user journey, content flow, and navigation system so visitors can quickly find information and confidently take action.",
       deliverables: [
-        "Structured semantic architecture maps",
-        "Search funnel intent diagrams",
-        "Keyword-to-page matching matrices"
+        "Sitemap & page architecture",
+        "User journey planning",
+        "Content structure mapping",
+        "Wireframes & page strategy"
       ]
     },
     {
       num: "03",
       phase: "Phase III",
-      title: "Semantic React Engineering",
+      title: "Design & Development",
       badge: "Build",
       color: "var(--accent-pink)",
       bgGlow: "rgba(236, 72, 153, 0.05)",
-      headline: "Coded for instant page speeds and compliance.",
-      desc: "We write clean, high-performance React code from scratch. By implementing semantic HTML5 structures, dynamic JSON-LD structured schemas, and lightning-fast loading layouts, we make sure search engines read your site with zero friction.",
+      headline: "Bringing the vision to life.",
+      desc: "Once the strategy is approved, we design and develop a custom website tailored to your business goals and brand identity. Every page is built with performance, responsiveness, usability, and long-term scalability in mind.",
       deliverables: [
-        "Semantic React DOM components",
-        "Automatic schema & sitemap injection",
-        "PageSpeed optimization (LCP under 1.2s)"
+        "Custom website design",
+        "Responsive development",
+        "Mobile optimization",
+        "Performance-focused build"
       ]
     },
     {
       num: "04",
       phase: "Phase IV",
-      title: "Automated Growth Scaling",
-      badge: "Scale",
+      title: "Launch & Ongoing Support",
+      badge: "Launch",
       color: "var(--accent-emerald)",
       bgGlow: "rgba(16, 185, 129, 0.05)",
-      headline: "Pipeline growth synced automatically.",
-      desc: "We connect your high-performing search pages directly to customer capture pipelines. We sync lead forms, CRM platforms, and database webhooks in real-time, ensuring traffic spikes translate directly into sales calls.",
+      headline: "A website that grows with your business.",
+      desc: "Launching your website is only the beginning. We help ensure everything continues running smoothly, stays updated, performs reliably, and evolves as your business grows.",
       deliverables: [
-        "Automated CRM & pipeline bridges",
-        "Real-time visibility growth tracker",
-        "Synchronized sales alerts & webhooks"
+        "Website deployment",
+        "Testing & quality assurance",
+        "Maintenance & updates",
+        "Ongoing support"
       ]
     }
   ];
@@ -101,28 +105,98 @@ export default function ProcessSection() {
   return (
     <section 
       style={{
-        backgroundColor: '#fafaf9',
+        backgroundColor: '#050505',
         padding: '120px 8%',
         position: 'relative',
         zIndex: 2,
-        borderBottom: '1px solid rgba(24, 24, 27, 0.08)',
+        borderBottom: '1px solid rgba(255, 255, 255, 0.04)',
         overflow: 'visible'
       }}
       id="process"
     >
-      {/* Background spot light */}
+      {/* Background ambient & radial glows */}
+      {/* Top ambient lighting */}
       <div 
-        className="glow-spot" 
         style={{ 
-          top: '20%', 
-          left: '10%', 
-          background: 'radial-gradient(circle, rgba(124, 58, 237, 0.02) 0%, rgba(250, 250, 249, 0) 70%)',
-          width: '700px',
-          height: '700px'
+          position: 'absolute', 
+          top: 0, 
+          left: 0, 
+          right: 0, 
+          height: '400px', 
+          background: 'radial-gradient(ellipse at 50% 0%, rgba(124, 58, 237, 0.06), rgba(6, 182, 212, 0.02) 50%, transparent 80%)', 
+          pointerEvents: 'none', 
+          zIndex: 1 
         }} 
       />
 
-      <div style={{ width: '100%', maxWidth: '1200px', margin: '0 auto' }}>
+      {/* Radial purple glow behind heading area */}
+      <div 
+        style={{ 
+          position: 'absolute', 
+          top: '10%', 
+          left: '5%', 
+          width: '700px', 
+          height: '700px', 
+          background: 'radial-gradient(circle, rgba(124, 58, 237, 0.05) 0%, transparent 70%)', 
+          pointerEvents: 'none', 
+          zIndex: 1 
+        }} 
+      />
+
+      {/* Soft cyan glow behind image area */}
+      <div 
+        style={{ 
+          position: 'absolute', 
+          bottom: '10%', 
+          right: '5%', 
+          width: '700px', 
+          height: '700px', 
+          background: 'radial-gradient(circle, rgba(6, 182, 212, 0.05) 0%, transparent 70%)', 
+          pointerEvents: 'none', 
+          zIndex: 1 
+        }} 
+      />
+
+      {/* Dark vignette around edges */}
+      <div 
+        style={{ 
+          position: 'absolute', 
+          inset: 0, 
+          background: 'radial-gradient(circle at 50% 50%, transparent 60%, rgba(2, 2, 4, 0.4) 100%)', 
+          pointerEvents: 'none', 
+          zIndex: 1 
+        }} 
+      />
+
+      {/* Smooth top transition into DiscoveryJourney */}
+      <div 
+        style={{ 
+          position: 'absolute', 
+          top: 0, 
+          left: 0, 
+          right: 0, 
+          height: '120px', 
+          background: 'linear-gradient(to bottom, #020204, transparent)', 
+          pointerEvents: 'none', 
+          zIndex: 1 
+        }} 
+      />
+
+      {/* Smooth bottom transition into Footer */}
+      <div 
+        style={{ 
+          position: 'absolute', 
+          bottom: 0, 
+          left: 0, 
+          right: 0, 
+          height: '120px', 
+          background: 'linear-gradient(to top, #020204, transparent)', 
+          pointerEvents: 'none', 
+          zIndex: 1 
+        }} 
+      />
+
+      <div style={{ width: '100%', maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 2 }}>
         
         {/* Header Block */}
         <div style={{ textAlign: 'left', marginBottom: '80px', maxWidth: '800px' }}>
@@ -143,25 +217,22 @@ export default function ProcessSection() {
             fontSize: 'clamp(32px, 5.5vw, 64px)',
             fontWeight: 900,
             fontFamily: 'var(--font-display)',
-            color: 'var(--text-light)',
+            color: '#FFFFFF',
             lineHeight: 1.05,
-            letterSpacing: '-0.03em'
+            letterSpacing: '-0.03em',
+            transition: 'color 0.4s ease'
           }}>
-            Engineering Permanent <br />
-            <span style={{ 
-              backgroundImage: 'linear-gradient(135deg, #18181b 30%, rgba(24, 24, 27, 0.6) 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent'
-            }}>Visibility.</span>
+            {steps[activeStep].headline}
           </h2>
           <p style={{
             fontSize: '16px',
-            color: 'var(--text-light-sub)',
-            maxWidth: '560px',
+            color: '#B8B8C5',
+            maxWidth: '680px',
             marginTop: '20px',
-            lineHeight: '1.6'
+            lineHeight: '1.6',
+            transition: 'color 0.4s ease'
           }}>
-            No guesses, no generic template checklist. A highly scientific search-compliance timeline designed to capture, optimize, and dominate rank structures.
+            {steps[activeStep].desc}
           </p>
         </div>
 
@@ -176,7 +247,7 @@ export default function ProcessSection() {
               <div 
                 className="panel-light-glow"
                 style={{
-                  background: `radial-gradient(circle, ${steps[activeStep].color}12 0%, rgba(250,250,249,0) 70%)`
+                  background: `radial-gradient(circle, ${steps[activeStep].color}12 0%, rgba(5,5,5,0) 70%)`
                 }}
               />
 
@@ -189,7 +260,7 @@ export default function ProcessSection() {
                 <div className="canvas-title-label" style={{ color: steps[activeStep].color }}>
                   {steps[activeStep].badge.toUpperCase()} ENGINE ACTIVE
                 </div>
-                <div style={{ fontSize: '10px', color: 'rgba(24, 24, 27, 0.15)', fontFamily: 'monospace' }}>
+                <div style={{ fontSize: '10px', color: 'rgba(255, 255, 255, 0.4)', fontFamily: 'monospace' }}>
                   V.1.09
                 </div>
               </div>
@@ -250,7 +321,7 @@ export default function ProcessSection() {
                   <h3 style={{
                     fontSize: 'clamp(22px, 3.2vw, 32px)',
                     fontWeight: 900,
-                    color: 'var(--text-light)',
+                    color: '#FFFFFF',
                     fontFamily: 'var(--font-display)',
                     letterSpacing: '-0.02em',
                     lineHeight: 1.15
@@ -272,7 +343,7 @@ export default function ProcessSection() {
                   {/* Step Description */}
                   <p style={{
                     fontSize: '14.5px',
-                    color: 'var(--text-light-sub)',
+                    color: '#B8B8C5',
                     lineHeight: '1.6',
                     marginTop: '12px'
                   }}>
@@ -285,7 +356,7 @@ export default function ProcessSection() {
                       fontSize: '11px',
                       textTransform: 'uppercase',
                       letterSpacing: '0.15em',
-                      color: 'var(--text-light)',
+                      color: '#FFFFFF',
                       fontWeight: 800,
                       marginBottom: '12px',
                       fontFamily: 'var(--font-display)'
@@ -294,7 +365,7 @@ export default function ProcessSection() {
                     </div>
                     <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '8px' }}>
                       {step.deliverables.map((item, i) => (
-                        <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', fontSize: '13px', color: 'var(--text-light-sub)' }}>
+                        <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', fontSize: '13px', color: '#B8B8C5' }}>
                           <span style={{ color: step.color, marginTop: '2px', display: 'flex' }}>
                             <CheckCircle size={14} />
                           </span>
@@ -310,8 +381,7 @@ export default function ProcessSection() {
                       {idx === 0 && <DiscoverVisual color={step.color} />}
                       {idx === 1 && <PlanVisual color={step.color} />}
                       {idx === 2 && <ExecuteVisual color={step.color} />}
-                      {idx === 3 && <OptimizeVisual color={step.color} />}
-                      {idx === 4 && <ScaleVisual color={step.color} />}
+                      {idx === 3 && <ScaleVisual color={step.color} />}
                     </div>
                   </div>
 
@@ -351,18 +421,18 @@ export default function ProcessSection() {
           width: 100%;
           height: 100%;
           max-height: 480px;
-          background: rgba(244, 244, 245, 0.8);
+          background: rgba(10, 10, 15, 0.75);
           backdrop-filter: blur(24px);
           -webkit-backdrop-filter: blur(24px);
-          border: 1px solid rgba(24, 24, 27, 0.08);
+          border: 1px solid rgba(255, 255, 255, 0.08);
           border-radius: 20px;
           padding: 24px;
           display: flex;
           flex-direction: column;
           position: relative;
           overflow: hidden;
-          box-shadow: 0 30px 60px -15px rgba(24, 24, 27, 0.06), 
-                      inset 0 1px 0 rgba(255, 255, 255, 0.6);
+          box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.6), 
+                      inset 0 1px 0 rgba(255, 255, 255, 0.08);
         }
 
         .panel-light-glow {
@@ -380,7 +450,7 @@ export default function ProcessSection() {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          border-bottom: 1px solid rgba(24, 24, 27, 0.08);
+          border-bottom: 1px solid rgba(255, 255, 255, 0.08);
           padding-bottom: 14px;
           margin-bottom: 20px;
           z-index: 1;
@@ -487,8 +557,8 @@ export default function ProcessSection() {
           .mobile-visual-card {
             width: 100%;
             height: 280px;
-            background: rgba(244, 244, 245, 0.8);
-            border: 1px solid rgba(24, 24, 27, 0.08);
+            background: rgba(10, 10, 15, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 14px;
             padding: 16px;
             display: flex;
@@ -505,79 +575,120 @@ export default function ProcessSection() {
 // -------------------------------------------------------------
 // DYNAMIC SVG SUB-COMPONENTS
 // -------------------------------------------------------------
-
-function DiscoverVisual({ color }) {
+function DiscoverVisual() {
   return (
-    <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', fontFamily: 'monospace' }}>
+    <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', gap: '12px', fontFamily: 'var(--font-sans)', color: '#FFFFFF' }}>
       
-      {/* Visual Crawler Sitemap Matrix */}
-      <div style={{ flex: 1, position: 'relative', border: '1px dashed rgba(24, 24, 27, 0.08)', borderRadius: '10px', background: 'rgba(24, 24, 27, 0.01)', overflow: 'hidden' }}>
+      {/* Bento Grid Board */}
+      <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '12px', flexGrow: 1 }}>
         
-        {/* Animated Sweep Radar bar */}
-        <div 
-          className="anim-sweep"
-          style={{
-            position: 'absolute',
-            left: 0,
-            right: 0,
-            height: '2px',
-            background: `linear-gradient(to right, rgba(0,0,0,0), ${color}, rgba(0,0,0,0))`,
-            boxShadow: `0 0 10px ${color}`,
-            pointerEvents: 'none',
-            zIndex: 2
-          }}
-        />
-
-        {/* Matrix Nodes layout */}
-        <svg width="100%" height="100%" viewBox="0 0 320 180" style={{ zIndex: 1, position: 'relative' }}>
-          {/* Sitemap Paths */}
-          <line x1="160" y1="20" x2="160" y2="150" stroke="rgba(24, 24, 27, 0.08)" strokeWidth="1.5" />
-          <line x1="80" y1="70" x2="240" y2="70" stroke="rgba(24, 24, 27, 0.08)" strokeWidth="1.5" />
-          <line x1="80" y1="70" x2="80" y2="130" stroke="rgba(24, 24, 27, 0.08)" strokeWidth="1.5" />
-          <line x1="240" y1="70" x2="240" y2="130" stroke="rgba(24, 24, 27, 0.08)" strokeWidth="1.5" />
-
-          {/* Node: Root */}
-          <circle cx="160" cy="20" r="6" fill="#fafaf9" stroke={color} strokeWidth="2" />
-          <text x="160" y="36" fill="#18181b" fontSize="8" textAnchor="middle">INDEX /</text>
-
-          {/* Nodes Level 2 */}
-          <circle cx="80" cy="70" r="5" fill="#fafaf9" stroke={color} strokeWidth="1.5" />
-          <text x="75" y="60" fill="var(--text-light-sub)" fontSize="8">/about</text>
-
-          <circle cx="240" cy="70" r="5" fill="#fafaf9" stroke={color} strokeWidth="1.5" />
-          <text x="245" y="60" fill="var(--text-light-sub)" fontSize="8">/services</text>
-
-          {/* Target Nodes */}
-          <circle cx="80" cy="130" r="4" fill="#fafaf9" stroke="#ef4444" strokeWidth="1.5" />
-          <text x="80" y="145" fill="#ef4444" fontSize="7" textAnchor="middle">404 ORPHAN</text>
-
-          <circle cx="160" cy="110" r="4" fill="#fafaf9" stroke="#15803d" strokeWidth="1.5" />
-          <text x="160" y="125" fill="#15803d" fontSize="7" textAnchor="middle">/case-studies</text>
-
-          <circle cx="240" cy="130" r="4" fill="#fafaf9" stroke="#ca8a04" strokeWidth="1.5" />
-          <text x="240" y="145" fill="#ca8a04" fontSize="7" textAnchor="middle">NO SCHEMA</text>
-
-          {/* Pulsing indicator dots */}
-          <circle cx="80" cy="130" r="8" fill="none" stroke="#ef4444" strokeWidth="1" className="pulse-indicator" style={{ transformOrigin: '80px 130px' }} />
-          <circle cx="240" cy="130" r="8" fill="none" stroke="#ca8a04" strokeWidth="1" className="pulse-indicator" style={{ transformOrigin: '240px 130px' }} />
-        </svg>
+        {/* Left Bento: Strategy Workshop Board */}
+        <div style={{
+          background: 'rgba(0, 0, 0, 0.25)',
+          border: '1px solid rgba(255, 255, 255, 0.08)',
+          borderRadius: '12px',
+          padding: '14px',
+          display: 'flex',
+          flexDirection: 'column',
+          position: 'relative',
+          overflow: 'hidden'
+        }}>
+          <div style={{ fontSize: '10px', fontWeight: 'bold', color: 'rgba(255, 255, 255, 0.4)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '8px' }}>Strategy Board</div>
+          
+          {/* Mock sticky notes */}
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', flexGrow: 1, position: 'relative', marginTop: '4px' }}>
+            <div style={{
+              background: '#fef08a',
+              boxShadow: '0 4px 10px rgba(0,0,0,0.15)',
+              padding: '8px 10px',
+              borderRadius: '4px',
+              fontSize: '9px',
+              fontWeight: 600,
+              width: '45%',
+              transform: 'rotate(-2deg)',
+              border: '1px solid rgba(234, 179, 8, 0.2)',
+              color: '#854d0e'
+            }}>
+              📌 Target User Personas
+            </div>
+            <div style={{
+              background: '#fbcfe8',
+              boxShadow: '0 4px 10px rgba(0,0,0,0.15)',
+              padding: '8px 10px',
+              borderRadius: '4px',
+              fontSize: '9px',
+              fontWeight: 600,
+              width: '45%',
+              transform: 'rotate(3deg)',
+              border: '1px solid rgba(236, 72, 153, 0.2)',
+              color: '#9d174d'
+            }}>
+              💡 Competitor Benchmarks
+            </div>
+            <div style={{
+              background: '#c7d2fe',
+              boxShadow: '0 4px 10px rgba(0,0,0,0.15)',
+              padding: '8px 10px',
+              borderRadius: '4px',
+              fontSize: '9px',
+              fontWeight: 600,
+              width: '90%',
+              transform: 'rotate(-1deg)',
+              border: '1px solid rgba(99, 102, 241, 0.2)',
+              color: '#3730a3'
+            }}>
+              🎯 Objectives & Roadmap Planning
+            </div>
+          </div>
+        </div>
+        
+        {/* Right Bento: Competitor Audit */}
+        <div style={{
+          background: 'rgba(0, 0, 0, 0.25)',
+          border: '1px solid rgba(255, 255, 255, 0.08)',
+          borderRadius: '12px',
+          padding: '14px',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-between'
+        }}>
+          <div>
+            <div style={{ fontSize: '10px', fontWeight: 'bold', color: 'rgba(255, 255, 255, 0.4)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '8px' }}>Discovery Audit</div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', fontSize: '9px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', padding: '4px 6px', background: 'rgba(255, 255, 255, 0.02)', borderRadius: '4px' }}>
+                <span style={{ color: '#ef4444', fontWeight: 'bold' }}> WP Page Load</span>
+                <span>4.8s ❌</span>
+              </div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', padding: '4px 6px', background: 'rgba(255, 255, 255, 0.02)', borderRadius: '4px' }}>
+                <span style={{ color: '#ef4444', fontWeight: 'bold' }}>Template Bloat</span>
+                <span>High ❌</span>
+              </div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', padding: '4px 6px', background: 'rgba(34, 197, 94, 0.06)', borderRadius: '4px', border: '1px solid rgba(34,197,94,0.1)' }}>
+                <span style={{ color: '#4ade80', fontWeight: 'bold' }}>Our Objective</span>
+                <span style={{ color: '#4ade80' }}>&lt; 1.0s ✅</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
       </div>
-
-      {/* Terminal Readout Logs */}
+      
+      {/* Bottom Bar: Audit Checklist */}
       <div style={{
-        marginTop: '12px',
-        padding: '10px 12px',
-        backgroundColor: 'rgba(24, 24, 27, 0.03)',
-        border: '1px solid rgba(24, 24, 27, 0.06)',
-        borderRadius: '6px',
-        fontSize: '10.5px',
-        color: '#7c3aed',
-        lineHeight: '1.4'
+        padding: '10px 14px',
+        backgroundColor: 'rgba(0, 0, 0, 0.2)',
+        border: '1px solid rgba(255, 255, 255, 0.08)',
+        borderRadius: '8px',
+        fontSize: '11px',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center'
       }}>
-        <div style={{ color: '#18181b', fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.05em', opacity: 0.4, marginBottom: '4px' }}>Active Crawl Log:</div>
-        <div>➜ Crawling URL index node [160, 20] ... <span style={{ color: '#15803d' }}>200 OK</span></div>
-        <div>➜ Auditing Metadata schemas ... <span style={{ color: '#ef4444' }}>Warning: 1 missing schema</span></div>
-        <div>➜ Bottleneck mapping completed in 104ms.</div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#4ade80', fontWeight: 'bold' }}>
+          <span style={{ display: 'inline-block', width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#22c55e', boxShadow: '0 0 6px #22c55e' }}></span>
+          DISCOVERY BRIEFING COMPLETED
+        </div>
+        <div style={{ fontSize: '9px', color: 'rgba(255, 255, 255, 0.4)', fontFamily: 'monospace' }}>4/4 TASKS VERIFIED</div>
       </div>
     </div>
   );
@@ -585,83 +696,61 @@ function DiscoverVisual({ color }) {
 
 function PlanVisual({ color }) {
   return (
-    <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', fontFamily: 'monospace' }}>
+    <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', gap: '12px', fontFamily: 'var(--font-sans)', color: '#FFFFFF' }}>
       
-      {/* Network Intent Mapping Canvas */}
-      <div style={{ flex: 1, border: '1px dashed rgba(24, 24, 27, 0.08)', borderRadius: '10px', background: 'rgba(24, 24, 27, 0.01)', overflow: 'hidden', display: 'flex', alignItems: 'center' }}>
-        <svg width="100%" height="100%" viewBox="0 0 320 160">
-          <defs>
-            <linearGradient id="gradient-line" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="rgba(24, 24, 27, 0.01)" />
-              <stop offset="50%" stopColor={color} />
-              <stop offset="100%" stopColor="rgba(24, 24, 27, 0.01)" />
-            </linearGradient>
-          </defs>
-
-          {/* Paths connecting nodes with dash offset animations */}
-          <path d="M 20 40 Q 100 40 160 80" fill="none" stroke="url(#gradient-line)" strokeWidth="1.5" strokeDasharray="6, 6" style={{ animation: 'dashOffset 2.5s linear infinite' }} />
-          <path d="M 20 80 H 160" fill="none" stroke="url(#gradient-line)" strokeWidth="1.5" strokeDasharray="6, 6" style={{ animation: 'dashOffset 2s linear infinite' }} />
-          <path d="M 20 120 Q 100 120 160 80" fill="none" stroke="url(#gradient-line)" strokeWidth="1.5" strokeDasharray="6, 6" style={{ animation: 'dashOffset 3s linear infinite' }} />
-
-          <path d="M 160 80 Q 220 50 280 50" fill="none" stroke="url(#gradient-line)" strokeWidth="1.5" strokeDasharray="6, 6" style={{ animation: 'dashOffset 2s linear infinite' }} />
-          <path d="M 160 80 Q 220 110 280 110" fill="none" stroke="url(#gradient-line)" strokeWidth="1.5" strokeDasharray="6, 6" style={{ animation: 'dashOffset 2.2s linear infinite' }} />
-
-          {/* Source nodes (Search Intents) */}
-          <g>
-            <rect x="20" y="28" width="65" height="20" rx="3" fill="#f4f4f5" stroke="rgba(24,24,27,0.15)" strokeWidth="1" />
-            <text x="25" y="41" fill="#18181b" fontSize="8">"seo agency"</text>
-            <circle cx="85" cy="38" r="2.5" fill={color} />
-          </g>
-
-          <g>
-            <rect x="20" y="70" width="70" height="20" rx="3" fill="#f4f4f5" stroke="rgba(24,24,27,0.15)" strokeWidth="1" />
-            <text x="25" y="83" fill="#18181b" fontSize="8">"grow organic"</text>
-            <circle cx="90" cy="80" r="2.5" fill={color} />
-          </g>
-
-          <g>
-            <rect x="20" y="110" width="80" height="20" rx="3" fill="#f4f4f5" stroke="rgba(24,24,27,0.15)" strokeWidth="1" />
-            <text x="25" y="123" fill="#18181b" fontSize="8">"react optimization"</text>
-            <circle cx="100" cy="120" r="2.5" fill={color} />
-          </g>
-
-          {/* Center Router Box */}
-          <g>
-            <rect x="135" y="65" width="50" height="30" rx="4" fill="#fafaf9" stroke={color} strokeWidth="1.5" style={{ filter: 'drop-shadow(0 0 5px rgba(59, 130, 246, 0.15))' }} />
-            <text x="160" y="80" fill="#18181b" fontSize="8" fontWeight="bold" textAnchor="middle">MAPPER</text>
-            <text x="160" y="89" fill="rgba(24,24,27,0.4)" fontSize="6" textAnchor="middle">ROUTING</text>
-          </g>
-
-          {/* Target Pages */}
-          <g>
-            <circle cx="280" cy="50" r="3.5" fill="#15803d" />
-            <text x="290" y="53" fill="#18181b" fontSize="8">/services/react-seo</text>
-            <text x="290" y="62" fill="var(--text-light-sub)" fontSize="6">High Intent (Conversion)</text>
-          </g>
-
-          <g>
-            <circle cx="280" cy="110" r="3.5" fill="#1d4ed8" />
-            <text x="290" y="113" fill="#18181b" fontSize="8">/blog/organic-funnel</text>
-            <text x="290" y="122" fill="var(--text-light-sub)" fontSize="6">Informational (Awareness)</text>
-          </g>
-
-        </svg>
-      </div>
-
-      {/* Description Info */}
+      {/* Sitemap & UX Grid Canvas */}
       <div style={{
-        marginTop: '12px',
-        padding: '10px 12px',
-        backgroundColor: 'rgba(24, 24, 27, 0.03)',
-        border: '1px solid rgba(24, 24, 27, 0.06)',
-        borderRadius: '6px',
-        fontSize: '10.5px',
-        color: '#2563eb',
-        lineHeight: '1.4'
+        flex: 1,
+        border: '1px dashed rgba(255, 255, 255, 0.12)',
+        borderRadius: '12px',
+        background: 'rgba(255, 255, 255, 0.01) radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px)',
+        backgroundSize: '12px 12px',
+        position: 'relative',
+        padding: '16px',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        overflow: 'hidden'
       }}>
-        <div style={{ color: '#18181b', fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.05em', opacity: 0.4, marginBottom: '4px' }}>Active Intent Map:</div>
-        <div>➜ Grouping search queries into semantic intent trees...</div>
-        <div>➜ Mapping nodes to conversion page routers ... <span style={{ color: '#15803d' }}>Complete</span></div>
+        
+        {/* Sitemap Flow Nodes */}
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flex: 1, position: 'relative' }}>
+          <svg style={{ position: 'absolute', width: '100%', height: '100%', top: 0, left: 0, pointerEvents: 'none' }}>
+            {/* Connection lines */}
+            <path d="M 160 30 L 160 65" stroke="rgba(255, 255, 255, 0.15)" strokeWidth="1.5" strokeDasharray="3, 3" />
+            <path d="M 160 65 L 60 65 L 60 100" stroke="rgba(255, 255, 255, 0.15)" strokeWidth="1.5" strokeDasharray="3, 3" />
+            <path d="M 160 65 L 160 100" stroke="rgba(255, 255, 255, 0.15)" strokeWidth="1.5" strokeDasharray="3, 3" />
+            <path d="M 160 65 L 260 65 L 260 100" stroke="rgba(255, 255, 255, 0.15)" strokeWidth="1.5" strokeDasharray="3, 3" />
+          </svg>
+          
+          {/* Main Nodes */}
+          <div style={{ position: 'absolute', top: '10px', left: '50%', transform: 'translateX(-50%)', background: '#050505', border: `1.5px solid ${color}`, padding: '4px 10px', borderRadius: '6px', fontSize: '9px', fontWeight: 'bold', boxShadow: '0 4px 12px rgba(0,0,0,0.5)', color: '#FFFFFF' }}>
+            [Home Page]
+          </div>
+          
+          <div style={{ position: 'absolute', bottom: '15px', left: '20px', background: 'rgba(10, 10, 15, 0.9)', border: '1px solid rgba(255,255,255,0.08)', padding: '4px 8px', borderRadius: '4px', fontSize: '8px', fontWeight: 600, color: '#B8B8C5' }}>
+            [Services Hub]
+          </div>
+          <div style={{ position: 'absolute', bottom: '15px', left: '50%', transform: 'translateX(-50%)', background: 'rgba(10, 10, 15, 0.9)', border: '1px solid rgba(255,255,255,0.08)', padding: '4px 8px', borderRadius: '4px', fontSize: '8px', fontWeight: 600, color: '#B8B8C5' }}>
+            [Case Studies]
+          </div>
+          <div style={{ position: 'absolute', bottom: '15px', right: '20px', background: 'rgba(10, 10, 15, 0.9)', border: '1px solid rgba(255,255,255,0.08)', padding: '4px 8px', borderRadius: '4px', fontSize: '8px', fontWeight: 600, color: '#B8B8C5' }}>
+            [Briefing Center]
+          </div>
+        </div>
+
+        {/* Figma/Planning controls overlay */}
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: '10px', fontSize: '9px' }}>
+          <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+            <span style={{ background: `${color}15`, color: color, padding: '2px 6px', borderRadius: '4px', fontWeight: 'bold' }}>USER JOURNEY: OPTIMIZED</span>
+            <span style={{ color: 'rgba(255, 255, 255, 0.4)' }}>Wireframes Complete</span>
+          </div>
+          <div style={{ display: 'flex', gap: '4px' }}>
+            <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#6366f1', color: '#fff', fontSize: '7px', fontWeight: 'bold', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>A</div>
+            <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#10b981', color: '#fff', fontSize: '7px', fontWeight: 'bold', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>U</div>
+          </div>
+        </div>
+
       </div>
     </div>
   );
@@ -669,289 +758,180 @@ function PlanVisual({ color }) {
 
 function ExecuteVisual({ color }) {
   return (
-    <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', fontFamily: 'monospace' }}>
+    <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', gap: '12px', fontFamily: 'var(--font-sans)', color: '#FFFFFF' }}>
       
-      {/* Code Editor Panel */}
+      {/* Responsive Preview Layout */}
       <div style={{
         flex: 1,
-        backgroundColor: '#f4f4f5',
-        border: '1px solid rgba(24, 24, 27, 0.08)',
-        borderRadius: '10px',
-        padding: '14px',
+        border: '1px solid rgba(255, 255, 255, 0.08)',
+        borderRadius: '12px',
+        background: 'rgba(0, 0, 0, 0.25)',
+        position: 'relative',
+        overflow: 'hidden',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '20px'
+      }}>
+        
+        {/* stacked preview screens in dynamic isometric layers */}
+        <div style={{ position: 'relative', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          
+          {/* Laptop Preview Mockup */}
+          <div style={{
+            width: '75%',
+            height: '75%',
+            background: 'rgba(10, 10, 15, 0.95)',
+            border: '1.5px solid rgba(255, 255, 255, 0.12)',
+            borderRadius: '8px',
+            boxShadow: '0 10px 30px rgba(0,0,0,0.5)',
+            display: 'flex',
+            flexDirection: 'column',
+            position: 'absolute',
+            top: '10px',
+            left: '20px',
+            zIndex: 1,
+            overflow: 'hidden'
+          }}>
+            {/* Header bar */}
+            <div style={{ height: '14px', background: 'rgba(255, 255, 255, 0.03)', borderBottom: '1px solid rgba(255, 255, 255, 0.06)', display: 'flex', alignItems: 'center', padding: '0 6px', gap: '3px' }}>
+              <div style={{ width: '4px', height: '4px', borderRadius: '50%', background: '#ef4444' }} />
+              <div style={{ width: '4px', height: '4px', borderRadius: '50%', background: '#eab308' }} />
+              <div style={{ width: '4px', height: '4px', borderRadius: '50%', background: '#22c55e' }} />
+            </div>
+            {/* Client layout */}
+            <div style={{ flex: 1, padding: '10px', display: 'flex', flexDirection: 'column', gap: '6px' }}>
+              <div style={{ fontSize: '9px', fontWeight: 'bold', color: '#FFFFFF', lineHeight: 1.1 }}>Scale Your Brand</div>
+              <div style={{ width: '100%', height: '20px', background: `${color}10`, border: `1px solid ${color}20`, borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '7px', color: color, fontWeight: 'bold' }}>Bespoke UI Layout</div>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4px' }}>
+                <div style={{ height: '12px', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.04)', borderRadius: '3px' }} />
+                <div style={{ height: '12px', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.04)', borderRadius: '3px' }} />
+              </div>
+            </div>
+          </div>
+
+          {/* Mobile Preview Mockup */}
+          <div style={{
+            width: '26%',
+            height: '65%',
+            background: 'rgba(10, 10, 15, 0.98)',
+            border: '1.5px solid rgba(255, 255, 255, 0.18)',
+            borderRadius: '10px',
+            boxShadow: '0 12px 35px rgba(0,0,0,0.6)',
+            position: 'absolute',
+            bottom: '10px',
+            right: '20px',
+            zIndex: 2,
+            overflow: 'hidden',
+            display: 'flex',
+            flexDirection: 'column'
+          }}>
+            {/* Header notch */}
+            <div style={{ height: '10px', background: '#000', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+              <div style={{ width: '25px', height: '3px', borderRadius: '10px', background: '#333' }} />
+            </div>
+            {/* Client layout */}
+            <div style={{ flex: 1, padding: '6px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
+              <div style={{ fontSize: '7px', fontWeight: 'bold', color: '#FFFFFF' }}>Mobile View</div>
+              <div style={{ width: '100%', height: '30px', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.04)', borderRadius: '3px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', padding: '4px' }}>
+                <div style={{ width: '70%', height: '3px', background: '#555', borderRadius: '1px' }} />
+                <div style={{ width: '50%', height: '3px', background: '#777', borderRadius: '1px' }} />
+                <div style={{ width: '100%', height: '8px', background: color, borderRadius: '2px' }} />
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      {/* Design Assets Palette */}
+      <div style={{
+        padding: '10px 14px',
+        backgroundColor: 'rgba(0, 0, 0, 0.2)',
+        border: '1px solid rgba(255, 255, 255, 0.08)',
+        borderRadius: '8px',
+        fontSize: '10px',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center'
+      }}>
+        <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
+          <span style={{ fontSize: '9px', fontWeight: 'bold', color: 'rgba(255, 255, 255, 0.4)', textTransform: 'uppercase' }}>UI Tokens:</span>
+          <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#020204' }} />
+          <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#7c3aed' }} />
+          <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#2563eb' }} />
+          <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#059669' }} />
+        </div>
+        <div style={{ color: color, fontWeight: 'bold' }}>RESPONSIVE DESIGN BUILDS</div>
+      </div>
+    </div>
+  );
+}
+
+function ScaleVisual() {
+  return (
+    <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', gap: '12px', fontFamily: 'var(--font-sans)', color: '#FFFFFF' }}>
+      
+      {/* Growth Performance Board */}
+      <div style={{
+        flex: 1,
+        border: '1px solid rgba(255, 255, 255, 0.08)',
+        borderRadius: '12px',
+        background: 'rgba(0, 0, 0, 0.25)',
+        padding: '16px',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
-        fontSize: '10px',
-        color: '#52525b',
-        boxShadow: 'inset 0 0 20px rgba(24, 24, 27, 0.02)'
+        position: 'relative',
+        overflow: 'hidden'
       }}>
         
-        {/* Editor tabs */}
-        <div style={{ display: 'flex', gap: '12px', borderBottom: '1px solid rgba(24, 24, 27, 0.08)', paddingBottom: '6px', marginBottom: '8px' }}>
-          <span style={{ color: color, borderBottom: `1.5px solid ${color}`, paddingBottom: '4px', fontWeight: 'bold' }}>Page.jsx</span>
-          <span style={{ opacity: 0.3 }}>SEO.jsx</span>
-          <span style={{ opacity: 0.3 }}>sitemap.xml</span>
-        </div>
-
-        {/* Code Content */}
-        <div style={{ flex: 1, lineHeight: '1.5', paddingLeft: '4px', color: '#27272a' }}>
-          <div><span style={{ color: '#b91c1c' }}>import</span> React <span style={{ color: '#b91c1c' }}>from</span> <span style={{ color: '#15803d' }}>'react'</span>;</div>
-          <div><span style={{ color: '#b91c1c' }}>import</span> &#123; <span style={{ color: '#1d4ed8' }}>SEOHead</span> &#125; <span style={{ color: '#b91c1c' }}>from</span> <span style={{ color: '#15803d' }}>'./SEO'</span>;</div>
-          <br />
-          <div><span style={{ color: '#b91c1c' }}>export default function</span> <span style={{ color: '#b45309' }}>VisibilityEngine</span>() &#123;</div>
-          <div>&nbsp;&nbsp;<span style={{ color: '#b91c1c' }}>return</span> (</div>
-          <div>&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span style={{ color: '#be185d' }}>main</span> <span style={{ color: '#1d4ed8' }}>className</span>=<span style={{ color: '#15803d' }}>"index-velocity"</span>&gt;</div>
-          <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span style={{ color: '#1d4ed8' }}>SEOHead</span></div>
-          <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style={{ color: '#1d4ed8' }}>title</span>=<span style={{ color: '#15803d' }}>"Rank #1 - Search Visibility Engine"</span></div>
-          <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style={{ color: '#1d4ed8' }}>schema</span>=&#123;<span style={{ color: '#6d28d9' }}>JSONLD</span>&#125;</div>
-          <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&gt;</div>
-          <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span style={{ color: '#1d4ed8' }}>StaticRender</span> <span style={{ color: '#1d4ed8' }}>optimized</span>=&#123;<span style={{ color: '#b91c1c' }}>true</span>&#125; /&gt;</div>
-          <div>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span style={{ color: '#be185d' }}>main</span>&gt;</div>
-          <div>&nbsp;&nbsp;);</div>
-          <div>&#125;</div>
-        </div>
-
-        {/* Console info line */}
-        <div style={{
-          borderTop: '1px solid rgba(24, 24, 27, 0.08)',
-          paddingTop: '6px',
-          marginTop: '6px',
-          color: color,
-          fontSize: '9px',
-          display: 'flex',
-          justifyContent: 'space-between'
-        }}>
-          <span>⚡ Vite compiler: Ready</span>
-          <span style={{ color: '#15803d' }}>DOM Node count: 212 (Indexable)</span>
-        </div>
-
-      </div>
-
-      {/* Extra execute indicators */}
-      <div style={{
-        marginTop: '12px',
-        padding: '10px 12px',
-        backgroundColor: 'rgba(24, 24, 27, 0.03)',
-        border: '1px solid rgba(24, 24, 27, 0.06)',
-        borderRadius: '6px',
-        fontSize: '10.5px',
-        color: '#be185d',
-        lineHeight: '1.4'
-      }}>
-        <div style={{ color: '#18181b', fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.05em', opacity: 0.4, marginBottom: '4px' }}>Build Terminal output:</div>
-        <div>➜ Dynamic JSON-LD structured schema inject ... <span style={{ color: '#15803d' }}>Built</span></div>
-        <div>➜ Server-side rendering (SSR) routing static bundles ... <span style={{ color: '#15803d' }}>Injected</span></div>
-      </div>
-    </div>
-  );
-}
-
-function OptimizeVisual({ color }) {
-  const [percentage, setPercentage] = useState(42);
-
-  useEffect(() => {
-    // Ticking animation for PageSpeed score counting up from 42 to 99
-    const duration = 2000;
-    const endValue = 99;
-    const startTime = performance.now();
-
-    const updateScore = (time) => {
-      const elapsed = time - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      // easeOutCubic curve
-      const ease = 1 - Math.pow(1 - progress, 3);
-      const current = Math.floor(42 + ease * (endValue - 42));
-      
-      setPercentage(current);
-
-      if (progress < 1) {
-        requestAnimationFrame(updateScore);
-      }
-    };
-
-    requestAnimationFrame(updateScore);
-  }, []);
-
-  return (
-    <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', fontFamily: 'monospace' }}>
-      
-      {/* Visual circular dashboard dial */}
-      <div style={{ flex: 1, border: '1px dashed rgba(24, 24, 27, 0.08)', borderRadius: '10px', background: 'rgba(24, 24, 27, 0.01)', overflow: 'hidden', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
-        
-        {/* SVG Dial */}
-        <svg width="120" height="120" viewBox="0 0 100 100" style={{ transform: 'rotate(-90deg)' }}>
-          {/* Track Circle */}
-          <circle cx="50" cy="50" r="40" fill="none" stroke="rgba(24, 24, 27, 0.08)" strokeWidth="6" />
-          
-          {/* Animating Circle line */}
-          <motion.circle 
-            cx="50" 
-            cy="50" 
-            r="40" 
-            fill="none" 
-            stroke={color} 
-            strokeWidth="6" 
-            strokeDasharray="251.2"
-            initial={{ strokeDashoffset: 251.2 }}
-            animate={{ strokeDashoffset: 251.2 - (251.2 * percentage) / 100 }}
-            transition={{ duration: 2, ease: "easeOut" }}
-            strokeLinecap="round"
-            style={{
-              filter: `drop-shadow(0 0 6px ${color}80)`
-            }}
-          />
-        </svg>
-
-        {/* Metric Label overlapping the center */}
-        <div style={{
-          position: 'absolute',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          fontFamily: 'var(--font-display)',
-          top: '32%'
-        }}>
-          <div style={{ fontSize: '28px', fontWeight: 900, color: '#18181b', letterSpacing: '-0.03em', lineHeight: 1 }}>
-            {percentage}
+        {/* Growth Stats Overview */}
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <span style={{ fontSize: '9px', fontWeight: 'bold', color: 'rgba(255, 255, 255, 0.4)', textTransform: 'uppercase' }}>Conversion Metrics</span>
+            <span style={{ fontSize: '24px', fontWeight: '900', color: '#4ade80', letterSpacing: '-0.02em', marginTop: '2px' }}>8.42% CVR</span>
           </div>
-          <div style={{ fontSize: '7px', color: color, letterSpacing: '0.15em', fontWeight: 'bold', textTransform: 'uppercase', marginTop: '2px' }}>
-            PAGESPEED
+          <div style={{ textAlign: 'right', display: 'flex', flexDirection: 'column' }}>
+            <span style={{ fontSize: '9px', fontWeight: 'bold', color: 'rgba(255, 255, 255, 0.4)', textTransform: 'uppercase' }}>Monthly Traffic</span>
+            <span style={{ fontSize: '16px', fontWeight: 'bold', color: '#FFFFFF' }}>+340% YoY</span>
           </div>
         </div>
 
-        {/* Status indicator badge */}
-        <div style={{
-          marginTop: '10px',
-          fontSize: '9px',
-          color: '#15803d',
-          backgroundColor: 'rgba(34, 197, 94, 0.06)',
-          border: '1px solid rgba(34, 197, 94, 0.15)',
-          padding: '2px 8px',
-          borderRadius: '20px',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '4px',
-          fontWeight: 'bold'
-        }}>
-          <span className="dot dot-green" style={{ width: '5px', height: '5px' }}></span>
-          LIGHTHOUSE COMPLIANT
-        </div>
-
-      </div>
-
-      {/* Core Web Vitals Badges */}
-      <div style={{
-        marginTop: '12px',
-        display: 'grid',
-        gridTemplateColumns: '1fr 1fr 1fr',
-        gap: '8px',
-        fontSize: '9px',
-        textAlign: 'center'
-      }}>
-        <div style={{ padding: '8px', background: 'rgba(24, 24, 27, 0.03)', border: '1px solid rgba(24, 24, 27, 0.06)', borderRadius: '6px' }}>
-          <div style={{ opacity: 0.4, marginBottom: '2px' }}>LCP SPEED</div>
-          <div style={{ color: '#15803d', fontWeight: 'bold' }}>0.8s (EXCELLENT)</div>
-        </div>
-        <div style={{ padding: '8px', background: 'rgba(24, 24, 27, 0.03)', border: '1px solid rgba(24, 24, 27, 0.06)', borderRadius: '6px' }}>
-          <div style={{ opacity: 0.4, marginBottom: '2px' }}>LAYOUT SHIFT</div>
-          <div style={{ color: '#15803d', fontWeight: 'bold' }}>0.00 (STABLE)</div>
-        </div>
-        <div style={{ padding: '8px', background: 'rgba(24, 24, 27, 0.03)', border: '1px solid rgba(24, 24, 27, 0.06)', borderRadius: '6px' }}>
-          <div style={{ opacity: 0.4, marginBottom: '2px' }}>INPUT BLOCK</div>
-          <div style={{ color: '#15803d', fontWeight: 'bold' }}>12ms (INSTANT)</div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function ScaleVisual({ color }) {
-  return (
-    <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', fontFamily: 'monospace' }}>
-      
-      {/* Tunnel Automation Dashboard Layout */}
-      <div style={{ flex: 1, border: '1px dashed rgba(24, 24, 27, 0.08)', borderRadius: '10px', background: 'rgba(24, 24, 27, 0.01)', overflow: 'hidden', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        
-        {/* SVG scale pipelines */}
-        <svg width="100%" height="100%" viewBox="0 0 320 160">
-          {/* Synchronized Dash Arrays */}
-          <line x1="80" y1="80" x2="240" y2="80" stroke="rgba(24, 24, 27, 0.08)" strokeWidth="2" />
-          <line x1="80" y1="80" x2="240" y2="80" stroke={color} strokeWidth="2" strokeDasharray="8, 12" style={{ animation: 'dashOffset 3s linear infinite' }} />
-
-          <path d="M 80 80 L 160 30 L 240 80" fill="none" stroke="rgba(24, 24, 27, 0.06)" strokeWidth="1.5" />
-          <path d="M 80 80 L 160 30 L 240 80" fill="none" stroke={color} strokeWidth="1.5" strokeDasharray="6, 10" style={{ animation: 'dashOffset 2s linear infinite' }} />
-
-          <path d="M 80 80 L 160 130 L 240 80" fill="none" stroke="rgba(24, 24, 27, 0.06)" strokeWidth="1.5" />
-          <path d="M 80 80 L 160 130 L 240 80" fill="none" stroke={color} strokeWidth="1.5" strokeDasharray="6, 10" style={{ animation: 'dashOffset 2.5s linear infinite' }} />
-
-          {/* Sync Nodes */}
-          <circle cx="80" cy="80" r="5" fill="#fafaf9" stroke={color} strokeWidth="1.5" />
-          <text x="80" y="93" fill="var(--text-light-sub)" fontSize="7" textAnchor="middle">SEO Engine</text>
-
-          <circle cx="160" cy="30" r="5" fill="#fafaf9" stroke={color} strokeWidth="1.5" />
-          <text x="160" y="20" fill="var(--text-light-sub)" fontSize="7" textAnchor="middle">Webhooks Sync</text>
-
-          <circle cx="160" cy="130" r="5" fill="#fafaf9" stroke={color} strokeWidth="1.5" />
-          <text x="160" y="143" fill="var(--text-light-sub)" fontSize="7" textAnchor="middle">Analytics API</text>
-
-          <circle cx="240" cy="80" r="6" fill="#fafaf9" stroke="#15803d" strokeWidth="2" style={{ filter: 'drop-shadow(0 0 5px rgba(34, 197, 94, 0.15))' }} />
-          <text x="240" y="94" fill="#18181b" fontSize="8" fontWeight="bold" textAnchor="middle">Lead Database</text>
-        </svg>
-
-        {/* Mini traffic growth chart overlay */}
-        <div style={{
-          position: 'absolute',
-          bottom: '10px',
-          right: '10px',
-          width: '90px',
-          height: '45px',
-          background: 'rgba(250, 250, 249, 0.95)',
-          border: '1px solid rgba(24, 24, 27, 0.12)',
-          borderRadius: '4px',
-          padding: '4px',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'space-between'
-        }}>
-          <div style={{ fontSize: '6.5px', color: color, fontWeight: 'bold' }}>CONVERSION SCALING</div>
-          
-          {/* SVG Sparkline drawing itself */}
-          <svg width="100%" height="22" viewBox="0 0 80 20">
+        {/* Growth Curve Chart */}
+        <div style={{ flex: 1, minHeight: '60px', position: 'relative', display: 'flex', alignItems: 'flex-end', paddingBottom: '10px' }}>
+          <svg style={{ width: '100%', height: '100%' }}>
+            {/* grid lines */}
+            <line x1="0" y1="50" x2="300" y2="50" stroke="rgba(255,255,255,0.04)" strokeWidth="0.5" />
+            <line x1="0" y1="25" x2="300" y2="25" stroke="rgba(255,255,255,0.04)" strokeWidth="0.5" />
+            
+            {/* Growth Curve */}
             <motion.path 
-              d="M 2 18 Q 20 18 35 14 T 60 8 T 78 2" 
+              d="M 5 60 C 50 60, 100 45, 140 25 T 280 2" 
               fill="none" 
-              stroke="#15803d" 
-              strokeWidth="1.5"
+              stroke="#4ade80" 
+              strokeWidth="2.5"
               initial={{ pathLength: 0 }}
               animate={{ pathLength: 1 }}
-              transition={{ duration: 1.8, ease: "easeOut" }}
+              transition={{ duration: 2, ease: "easeOut" }}
             />
-            <line x1="2" y1="18" x2="78" y2="18" stroke="rgba(24, 24, 27, 0.1)" strokeWidth="0.5" />
+            
+            {/* Glowing peak dot */}
+            <circle cx="280" cy="2" r="4" fill="#22c55e" />
+            <circle cx="280" cy="2" r="8" fill="none" stroke="#22c55e" strokeWidth="1" className="pulse-indicator" style={{ transformOrigin: '280px 2px' }} />
           </svg>
-          
-          <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '6.5px', color: '#18181b' }}>
-            <span>Traffic: 4.2x</span>
-            <span style={{ color: '#15803d' }}>+320% Leads</span>
+        </div>
+
+        {/* Recent Form Capture Submissions list */}
+        <div style={{ borderTop: '1px solid rgba(255, 255, 255, 0.06)', paddingTop: '10px', display: 'flex', flexDirection: 'column', gap: '5px' }}>
+          <div style={{ fontSize: '9px', fontWeight: 'bold', color: 'rgba(255, 255, 255, 0.4)', textTransform: 'uppercase' }}>Recent Inquiries:</div>
+          <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '9px', background: 'rgba(34, 197, 94, 0.06)', border: '1px solid rgba(34,197,94,0.1)', padding: '4px 6px', borderRadius: '4px' }}>
+            <span style={{ fontWeight: 'bold', color: '#4ade80' }}>📨 Strategy Call Booked</span>
+            <span style={{ color: '#4ade80', fontWeight: 'bold' }}>New Prospect</span>
           </div>
         </div>
 
-      </div>
-
-      {/* Sync Report */}
-      <div style={{
-        marginTop: '12px',
-        padding: '10px 12px',
-        backgroundColor: 'rgba(24, 24, 27, 0.03)',
-        border: '1px solid rgba(24, 24, 27, 0.06)',
-        borderRadius: '6px',
-        fontSize: '10.5px',
-        color: '#059669',
-        lineHeight: '1.4'
-      }}>
-        <div style={{ color: '#18181b', fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.05em', opacity: 0.4, marginBottom: '4px' }}>Sync Pipelines:</div>
-        <div>➜ Routing traffic spikes into lead database pipelines...</div>
-        <div>➜ Triggering webhooks automation sync... <span style={{ color: '#15803d' }}>Online</span></div>
       </div>
     </div>
   );
