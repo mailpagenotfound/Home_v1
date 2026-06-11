@@ -26,14 +26,14 @@ This document contains a comprehensive, section-by-section transcription of the 
 
 ### Stage 1 & 2: Search Box Interface
 * **Overlay Text**: "Search" (rendered in clamp display bold title font)
-* **Mock Input Query Simulated Typing**: `best digital marketing agency`
+* **Mock Input Query Simulated Typing**: `why can't customers find my website`
 * **Searching Feedback State (Fades In)**:
   * Indicator: `Searching...` (purple typography)
   * Description: `Finding businesses that create online presence...`
 
 ### Stage 3: Mock Search Engine Results Page (SERP)
 * **Web Search Header**: `WebSearch` (represented as standard logo with a purple 'Search' badge)
-* **Query Match Address Input**: `best digital marketing agency`
+* **Query Match Address Input**: `why can't customers find my website`
 * **Organic Listing 1 (De-emphasized / Blurred / Obscure)**:
   * URL: `https://www.omnimediaseo.com`
   * Title: `OmniMedia Agency | Traditional Marketing Packages`

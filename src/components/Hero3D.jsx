@@ -25,7 +25,7 @@ export default function Hero3D() {
   // STAGES & INTERACTIVE STATES
   // -------------------------------------------------------------
   // Stages:
-  // 1: Search typing "best digital marketing agency"
+  // 1: Search typing "why can't customers find my website"
   // 2: Typing complete, pause, then searching...
   // 3: Search results render, PageNotFound highlighted
   // 4: PageNotFound result clicked/selected -> expands to browser & unlocks scroll
@@ -36,7 +36,7 @@ export default function Hero3D() {
   const [isSearching, setIsSearching] = useState(false);
   const [searchGlow, setSearchGlow] = useState(false);
   
-  const query = "best digital marketing agency";
+  const query = "why can't customers find my website";
   const containerRef = useRef(null);
   const hasRevealedHeroRef = useRef(hasRevealedHero);
 
